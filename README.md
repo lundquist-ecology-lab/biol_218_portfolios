@@ -89,7 +89,7 @@ what you need to do in Windows or Linux
 2.  Download the latest version of `RStudio` from 
     [www.RStudio.org](https://www.rstudio.com/products/rstudio/download/)
 3.  Open RStudio.app 
-    ![img](./screenshots/macos/RStudio.png)
+    ![img](./screenshots/linux/rstudio.jpg)
 4.  Navigate to `File > New Project...`
     ![img](./screenshots/macos/new_project.png)
 5.  Choose `Version Control`
