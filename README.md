@@ -49,6 +49,7 @@ complexity. Skills in data analysis with R is now becoming a must for many looki
 for graduate or professional positions and is a great addition to a
 resumé.
 
+ [Tutorial Videos](http://www.lundquistecology.com/videos/r-tutorials)
 
 <a id="org6dff171"></a>
 
@@ -57,9 +58,9 @@ resumé.
 Whether you are using MacOS, Windows, or Linux, you will need to
 download Git.
 
-MacOS:
+linux:
 
-Download [Git for MacOS](https://git-scm.com/download/mac) and just
+Download [Git for linux](https://git-scm.com/download/mac) and just
 follow the prompts.
 
 Windows:
@@ -81,38 +82,38 @@ Thats it, now you have Git!
 
 # Installing and using  R and RStudio
 
-These are the instructions for MacOS, but they should be similar to
-what you need to do in Windows or Linux
+These are the instructions for Linux, but they should be similar to
+what you need to do in Windows or MacOS
 
 1.  Download latest version of `R` from
     [cran.r-project.org](https://cran.r-project.org)
 2.  Download the latest version of `RStudio` from 
     [www.RStudio.org](https://www.rstudio.com/products/rstudio/download/)
 3.  Open RStudio.app 
-    ![img](./screenshots/macos/RStudio.png)
+    ![img](./screenshots/linux/RStudio.png)
 4.  Navigate to `File > New Project...`
-    ![img](./screenshots/macos/new_project.png)
+    ![img](./screenshots/linux/new_project.png)
 5.  Choose `Version Control`
-    ![img](./screenshots/macos/choose_vc.png)
+    ![img](./screenshots/linux/choose_vc.png)
 6.  Choose `Git`
-    ![img](./screenshots/macos/choose_git.png)
+    ![img](./screenshots/linux/choose_git.png)
 7.  Set `Repository URL: https://github.com/lundquist-ecology-lab/biostats`
-    and set the `Project directory name: biostats` and 
-    set `~/Desktop` (or whatever directory you want to
+    and set the `Project directory name: biostatistics` and 
+    set the projet subdirectory as `~/Documents/biostatistics` (or whatever directory you want to
     use) then select `Create Project`
-    ![img](./screenshots/macos/git_location.png)
+    ![img](./screenshots/linux/git_location.png)
 8.  At this point RStudio should download everything from this GitHub
     repository into your project directory (bottom right).
-    ![img](./screenshots/macos/project_directory.png)
-9.  You can now navigate folders and open files directly in
-    RStudio. For example: `Open example.r` and it will open
-    in the built-in text editor (top left)
-    `screenshots/macos/R_example.png`
-10. Content will be added and updated in the
-    repository frequently. To download the new content, you simply need to
-    `Pull` the code from the repository. Do this by
-    navigating to `Tools > Version Control > Pull Branches` 
-    ![img](./screenshots/macos/pull_branches.png)
+    ![img](./screenshots/linux/project_directory.png)
+9.  You can now navigate folders directly in
+    RStudio. For example: Open `porfolios` and it will open
+    the portfolios folder
+    ![img](./screenshots/linux/folder_open.png)
+10. You can also open `.r` files, including the portfolios and other assignments. RStudio
+    will open an `Editor` window on the `Top Left` panel
+    ![img](./screenshots/linux/file_example.png)
+12. These files can be edited and saved within your project directory.
+
 
 When in doubt, you can also get the files off of GitHub by downloading them
 manually. To do this:
@@ -123,11 +124,5 @@ manually. To do this:
 4.  Right click on `Raw` and select "Save Linked File"
 5.  Depending on your browser, it will either download automatically or you can choose where to download it on to your machine.
 6.  You should now be able to read and edit the file.
-
-[TA Blog](http://www.lundquistecology.com/blog.html)
-
-[Biologist's Analytic Toolkit by Dr. Bill Stein](http://biotoolbox.binghamton.edu)
-
-[MyCourses](https://mycourses.binghamton.edu)
 
 
