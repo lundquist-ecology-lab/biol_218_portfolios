@@ -60,7 +60,7 @@ download Git.
 
 linux:
 
-Download [Git for linux](https://git-scm.com/download/mac) and just
+Download [Git for MacOS](https://git-scm.com/download/mac) and just
 follow the prompts.
 
 Windows:
@@ -77,13 +77,14 @@ Open Terminal and type:
 
 Thats it, now you have Git!
 
-
 <a id="org73ab150"></a>
 
 # Installing and using  R and RStudio
 
 These are the instructions for Linux, but they should be similar to
 what you need to do in Windows or MacOS
+
+**<ins>CLICK ON IMAGES FOR LARGER VERSIONS</ins>**
 
 1.  Download latest version of `R` from
     [cran.r-project.org](https://cran.r-project.org)
@@ -109,11 +110,11 @@ what you need to do in Windows or MacOS
     RStudio. For example: Open `porfolios` and it will open
     the portfolios folder
     ![img](./screenshots/linux/folder_open.png)
-10. You can also open `.r` files, including the portfolios and other assignments. RStudio
+10.  You can also open `.r` files, including the portfolios and other assignments. RStudio
     will open an `Editor` window on the `Top Left` panel
     ![img](./screenshots/linux/file_example.png)
-12. These files can be edited and saved within your project directory.
-
+11.  These files can be edited, tested with the `-> Run` command and saved within your project directory
+12.  Once you are done editing and testing your porfolios, the `.r` files can be [uploaded to Brightspace](https://mmm.brightspace.com/d2l/home/15700).
 
 When in doubt, you can also get the files off of GitHub by downloading them
 manually. To do this:
