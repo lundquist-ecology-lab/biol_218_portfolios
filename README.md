@@ -10,8 +10,6 @@ This is the GitHub repository (repo) for Biol/Math 218
 
 Instructor: Matthew Lundquist
 
-Office: Carson 603
-
 If you are new to GitHub, you should check out this 
 [blog post by Lauren Orsini](http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1).
 However, you only need to know how to download content from the
