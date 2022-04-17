@@ -6,7 +6,7 @@
 
 Short URL: [bit.ly/biostats218](http://bit.ly/biostats218)
 
-This is the GitHub repository (repo) for Biol/Math 218
+This is the GitHub repository for Biol/Math 218
 
 Instructor: Matthew Lundquist
 
