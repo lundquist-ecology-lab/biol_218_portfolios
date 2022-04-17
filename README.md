@@ -56,7 +56,7 @@ resumé.
 Whether you are using MacOS, Windows, or Linux, you will need to
 download Git.
 
-linux:
+MacOS:
 
 Download [Git for MacOS](https://git-scm.com/download/mac) and just
 follow the prompts.
