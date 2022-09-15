@@ -1,0 +1,12 @@
+{
+    "editor.fontSize": 13,
+    "editor.rulers": {},
+    "editor.renderLineHighlight": "none",
+    "workbench.colorCustomizations": {
+        "editor.lineHighlightBorder": "#fff"
+    },
+    "editor.fontFamily": "Fira Code",
+    "files.autoSave": "afterDelay",
+    "editor.guides.highlightActiveBracketPair": false,
+    "editor.foldingHighlight": false
+}
