@@ -1,6 +1,6 @@
 ## Biostatistics (Biol/Math 218) Portfolio 1
 
-## Name: 
+## Name:
 
 ## Note: All text that is not r code needs to be commented out using the "#", this includes
 ## all notes and answers to questions.
