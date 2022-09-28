@@ -22,7 +22,6 @@ sub-directories in the repository. For each folder, there will be
 a `.rmd` file with all the information you need as well as any data or
 supplementary material.
 
-
 <a id="org88bf26b"></a>
 
 ## What is R?
@@ -72,7 +71,7 @@ Open Terminal and type:
     sudo apt-get update
     sudo apt-get install git
 
-Thats it, now you have Git!
+That's it, now you have Git!
 
 <a id="org73ab150"></a>
 
@@ -97,7 +96,7 @@ what you need to do in Windows or MacOS
     ![img](./screenshots/linux/choose_git.png)
 7. Set `Repository URL: https://github.com/lundquist-ecology-lab/biostats`
     and set the `Project directory name: biostatistics` and
-    set the projet subdirectory as `~/Documents/biostatistics` (or whatever directory you want to
+    set the project subdirectory as `~/Documents/biostatistics` (or whatever directory you want to
     use) then select `Create Project`
     ![img](./screenshots/linux/git_location.png)
 8. At this point RStudio should download everything from this GitHub
@@ -111,7 +110,7 @@ what you need to do in Windows or MacOS
     will open an `Editor` window on the `Top Left` panel
     ![img](./screenshots/linux/file_example.png)
 11. These files can be edited, tested with the `-> Run` command and saved within your project directory
-12. Once you are done editing and testing your porfolios, the `.r` files can be [uploaded to Brightspace](https://mmm.brightspace.com/d2l/home/15700).
+12. Once you are done editing and testing your portfolios, the `.r` files can be [uploaded to Brightspace](https://mmm.brightspace.com/d2l/home/15700).
 
 When in doubt, you can also get the files off of GitHub by downloading them
 manually. To do this:
