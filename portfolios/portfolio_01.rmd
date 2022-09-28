@@ -1,3 +1,9 @@
+---
+output: word_document
+    reference_docx: "/templates/word_template.docx"
+---
+
+
 # Biostatistics (Biol/Math 218) Portfolio 1
 
 **Name**:
@@ -5,7 +11,7 @@
 All text that is not r code needs to be commented out using the "#", this includes
 #all notes and answers to questions.
 
-- Question 1: Define and contrast samples and populations, and parameters and estimates
+### Question 1: Define and contrast samples and populations, and parameters and estimates
 
 An Environmental Studies student was interested in the attitudes of students at her college about 
 new sustainability practices at the school. She developed a questionnaire and acquired the list of emails 
@@ -13,41 +19,37 @@ for all enrolled students. She randomly selected 500 students from those email l
 
 A total of 150 of the 500 questionnaires were filled out and returned to her.
 
-- Question 2: Can the 150 students that returned questionnaires be considered as a random sample of all students? Why or why not?
+### Question 2: Can the 150 students that returned questionnaires be considered as a random sample of all students? Why or why not?
 
-- Question 3: Explain what type of bias might be at play here.
+### Question 3: Explain what type of bias might be at play here.
 
-- Question 4: What is sampling error and how can researchers can minimize it?
+### Question 4: What is sampling error and how can researchers can minimize it?
 
 Here are some vectors of data
 ```{r, example_data}
-
-x1 <- iris$Sepal.Length
-x2 <- Orange$age
-x3 <- Orange$circumference
-x4 <- InsectSprays$count
-x5 <- ChickWeight$ Weight
-
+y1 <- iris$Sepal.Length
+y2 <- Orange$age
+y3 <- Orange$circumference
+y4 <- InsectSprays$count
+y5 <- ChickWeight$ Weight
 ```
 
-- Question 5: Below, reproduce the code block above and mark each vector as either **continuous** 
-or **discrete** using comments "#". 
+### Question 5: Below, reproduce the code block above and mark each vector as either continuous or discrete using comments "#". 
 
 Measuring biodiversity, the number and type of animals and plants in a given area is
 important for informing conservation efforts. To determine the community composition
 of pollinators in parks in New York City, a researcher placed hundreds of red cup traps
 filled with water around the city to attract and trap pollinators in the summer of 2019. 
 Each cup was checked daily for insects and the water was refilled. The collected
-#pollinators were pinned and identified in the lab. At the end of the study,
+pollinators were pinned and identified in the lab. At the end of the study,
 the total number of pollinator species (richness) in New York City parks were estimated by
 the total number of pollinators collected during the study. 
 
-- Question 6: What parameter is being estimated in this pollinator study?
+### Question 6: What parameter is being estimated in this pollinator study?
 
-- Question 7: Is the sample of individuals captured in red cup traps likely to be a random sample? 
-Why or why not? Include the two criteria that define a sample as random in your answer.
+### Question 7: Is the sample of individuals captured in red cup traps likely to be a random sample? Why or why not? Include the two criteria that define a sample as random in your answer.
 
-- Question 8: Is the number of species in the sample likely to be an unbiased estimate? Why or why not?
+### Question 8: Is the number of species in the sample likely to be an unbiased estimate? Why or why not?
 
 The courtship of male and female fruit flies is complex and can be
 impacted by changes in their environment. A scientist exposed thirty
@@ -55,22 +57,22 @@ male fruit flies to the pesticide Paraquat, which can inhibit neurological
 function, as well as kept thirty males unexposed. She studied whether 
 mating success was different between the two groups.
 
-- Question 9: Which is the explanatory and which is the response variable?
+### Question 9: Which is the explanatory and which is the response variable?
 
-- Question 10: For each variable, state whether they are categorical or numeric?
+### Question 10: For each variable, state whether they are categorical or numeric?
 
-- Question 11: Is this study observational or experimental?
+### Question 11: Is this study observational or experimental?
 
 A researcher wanted to compare aquatic insect size in urban and 
 rural streams in upstate New York. The collected individuals of
 the hellgrammite *Nigronia serricornus* in both an urban and
 rural stream sites and weighed them in the lab.
 
-- Question 12: Which is the explanatory and which is the response variable?
+### Question 12: Which is the explanatory and which is the response variable?
 
-- Question 13: Which variables are categorical and which are numeric?
+### Question 13: Which variables are categorical and which are numeric?
 
-- Question 14: Is this study observational or experimental?
+### Question 14: Is this study observational or experimental?
 
 
 
