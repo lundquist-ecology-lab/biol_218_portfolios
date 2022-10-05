@@ -1,0 +1,105 @@
+---
+output:
+  word_document:
+    reference_docx: "../templates/word_template.docx"
+---
+
+# Biostatistics (Biol/Math 218) Portfolio 3 
+# Summary statistics and data exploration
+
+**Name:**
+
+Answer all questions to the best of your ability. All r code needs to 
+be within properly labeled code block and all code needs to work properly, 
+so double check your work!
+
+## Exercise 01: Basic mathematical functions
+
+Consider this data: 11, 12, 13, 14, 14, 13, 12, 11
+
+In a code chunk below, produce a vector of the above data and determine these using the built-in functions in r
+  1) Number of observations
+  2) Sum of observations
+  3) Highest observation
+  4) Lowest observation
+
+
+### Exercise 02: In a code chunk, calculate the mean of Iris sp. sepal widths both using the mean equation and using the mean() function.
+
+## Question 01: How do your results from each calculation compare?
+
+## Exercise 03: In a code chunk, calculate the mean of Iris setosa sepal widths
+
+
+## Exercise 04: Write a code chunk to calculate:
+  1) Range of Iris setosa sepal widths
+  2) Median of the Iris setosa sepal widths
+
+## Question XX: Is there a skew to the Iris setosa sepal width data? If so, what direction and explain your reasoning
+
+## Exercise XX: Write a code chunk to calculate the variance of the Iris versicolor petal lengths using the var() function.
+
+## Exercise XX: Write a code chunk to calculate the standard deviations of Iris virginica petal lengths using the standard deviation equation and using the sd() function.
+
+## Exercise XX: Write a chode chunk using summary() for the entire Iris dataset. 
+
+
+### Question XX: What are histograms used to illustrate?
+
+## Exercise XX: Run the following code to produce a histogram
+
+```{r, sepal_histogram}
+data(iris) # Use the built-in Iris data set
+
+hist(iris$Sepal.Length, col = "lightblue", main = "Iris sepal length",
+        xlab = "Sepal length")
+```
+
+## Exercise XX: In a new code chunk below, recreate this histogram for Iris petal width and change the color.
+
+Fun code: Run this chunk to see the built-in colors in R
+```{r, color_grid}
+pdf()
+showCols <- function(cl = colors(), bg = "grey",
+                     cex = 0.75, rot = 30) {
+    m <- ceiling(sqrt(n <- length(cl)))
+    length(cl) <- m * m; cm <- matrix(cl, m)
+    require("grid")
+    grid.newpage(); vp <- viewport(w = .92, h = .92)
+    grid.rect(gp = gpar(fill = bg))
+    grid.text(cm, x = col(cm) / m, y = rev(row(cm))/m, rot = rot,
+              vp = vp, gp = gpar(cex = cex, col = cm))
+  }
+showCols(cl = colors(), bg= "gray33", rot = 30, cex = 0.75)
+dev.off()
+```
+
+## Question XX: Run each of the three code chunks below, identify the shape of each.
+
+```{r, histogram_1}
+hist(rbeta(10000,5,2), main = "", xlab = "", col = "darkred")
+```
+
+```{r, histogram_2}
+mu1 <- log(1)
+mu2 <- log(50)
+sig1 <- log(3)
+sig2 <- log(3)
+cpct <- 0.4
+
+histDistFunc <- function (n,cpct, mu1, mu2, sig1, sig2) {
+  y0 <- rlnorm(n, mean = mu1, sd = sig1)
+  y1 <- rlnorm(n, mean = mu2, sd = sig2)
+
+  flag <- rbinom(n,size = 1,prob = cpct)
+  y <- y0 * (1 - flag) + y1 * flag 
+}
+
+histData <- histDistFunc(n = 100, cpct, mu1, mu2, sig1, sig2)
+hist(log(histData), main = "", col = "darkred")
+```
+
+```{r, histogram_3}
+
+hist(rbeta(10000, 1, 1), main = "", xlab = "", col = "darkred")
+```

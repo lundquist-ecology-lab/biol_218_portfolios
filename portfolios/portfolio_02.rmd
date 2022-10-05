@@ -1,0 +1,163 @@
+---
+title:  Biol/Math 218 Portfolio 2
+subtitle: Data manipulation and basic plotting
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../html"
+    )
+  })
+---
+
+## Introduction
+
+In this portfolio, you will demonstrate your skills at uploading data and doing basic 
+data exploration and plotting. Answers to each **question** should be entered in the 
+designated `Answer:` block. All **exercises** need to be done within `r{}` chunks, with any 
+non-code commented out with **#**.
+
+- Total exercises: ****
+- Total questions: ****
+
+## Part 01: Dealing with data
+
+### Exercise 01
+In the space below, write a `r{}` code chunk to
+  
+  1) Call the "iris" data set, without the whole data set being printed
+  2) List the column names of the data set
+  3) Determine which columns are numeric and which are factors
+  4) Determine the levels of the factors
+
+### Exercise 02
+In the space below, write a `r{}` code chunk to:
+  
+  1) Export the `iris` data set as a *.csv file
+  2) Import that *.csv as a data frame called "iris_import"
+  3) Create a vector of only petal width observations
+  4) Create a separate data frame of only the *Iris setosa* observations
+  5) Create a separate vector of only *Iris veriscolor* sepal lengths
+
+
+## Part 02: Basic plotting
+
+**Question 01**: What are the four rules for drawing a good graph?
+
+`Q01 Answer:`
+
+### Exercise 03-01
+Run the following code to produce a bar graph
+```{r, bar_graphs}
+
+max_temp <- c(22, 27, 26, 24, 23, 26, 28)
+
+## Barplot() function
+barplot(max_temp,
+        main = "Maximum Temperatures in a Week",
+        ylab = "Degree Celsius",
+        xlab = "Day",
+        ylim = c(0, 30), 
+        names.arg = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"),
+        col = "darkred",
+        horiz = FALSE) 
+
+```
+
+**Question 02**: For what sort of data are bar graphs used?
+
+`Q02 Answer:`
+
+**Question 03**: Which day had the highest maximum temperature during that week?
+
+`Q03 Answer:`
+
+### Exercise 03-02
+In a new `r{}` code chunk below, recreate this bar graph for the following temperatures: 
+31, 27, 24, 23, 25, 28, 22 and make the bars **light blue**
+
+*Hint: Use copy/paste and make sure to change the ylim() to an appropriate range* 
+
+### Exercise 04-01 
+Run the following code to plot a scatter plot of *Iris* petal width and petal length
+```{r, iris_scatterplot}
+
+data(iris)
+
+plot(iris$Petal.Length, iris$Petal.Width, pch = 16, col = "black", 
+     main = "Relationship of flower part dimensions", xlab = "Petal length", 
+     ylab = "Petal width",
+     xlim = c(4, 7), ylim = c(0, 3))
+```
+
+**Question 04**: What is the relationship between petal length and petal width?
+
+`Q04 Answer:`
+
+### Exercise 04-02 
+To look at the strength of the relationship, you can 
+plot the line of best fit by using the lm() and abline() functions. 
+Practice that here, but we will look into this in more depth later 
+on in the semester.
+
+```{r, iris_bestfit}
+data(iris)
+
+plot(iris$Petal.Length, iris$Petal.Width, pch = 16, col = "black", 
+     main = "Relationship of flower part dimensions", xlab = "Petal length", 
+     ylab = "Petal width",
+     xlim = c(4, 7), ylim = c(0, 3))
+
+bestfit <- lm(iris$Petal.Width ~ iris$Petal.Length) # Form y ~ x
+abline(bestfit, lwd = 3) # lwd: line width
+```
+
+### Exercise 04-03
+Recreate this plot and line of best fit for the sepal 
+length and sepal widths of *Iris* in a code chunk below. 
+Change colors if you would like, but make sure to change the x and y limits if needed
+
+### Exercise 05
+Run this box and whisker plot and answer the question.
+```{r iris_boxplot}
+data(iris)
+
+boxplot(iris$Sepal.Length ~ iris$Species,
+      main = "Length of Iris sepals",
+      ylab = "Sepal length",
+      xlab = "Species")
+```
+
+**Question 05**: What do the thick lines in the boxes represent? What do the whiskers represent?
+
+### Exercise 06
+Run this violin plot and answer the question.
+```{r iris_violin}
+data(iris)
+library(ggplot2)
+
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+  ggtitle("Length of Iris sepals") +
+  xlab("Species") +
+  ylab("Sepal length") +
+  geom_violin()
+```
+
+**Question 06**: Why is this called a violin plot? What do they represent?
+
+## Part 3: Advanced plots
+
+### Exercise 07
+Go to https://r-graph-gallery.com/ and:
+
+  1) Choose two plot types that we have not gone over here
+  2) Copy and paste code to produce each plot in their own chunk, making sure that they work properly
