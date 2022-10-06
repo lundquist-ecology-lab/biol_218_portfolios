@@ -1,0 +1,87 @@
+---
+title:  Biol/Math 218 Portfolio 11
+subtitle: Data transformations and non-parametric tests
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../knit_html"
+    )
+  })
+---
+
+## Introduction 
+In this portfolio, you will demonstrate your skills at utilizing data transformations
+and non-parametric tests.
+Answers to each **question** should be entered in the 
+designated `Answer:` block. All **exercises** need to be done within `r{}` chunks, with any 
+non-code commented out with `#`. Use the `print()` function to show results of calculations.
+
+- Total exercises: **04**
+- Total questions: **00**
+
+## Part 01: Data transformations
+
+### Exercise 01-1
+Using the petal length data of *Iris setosa* and *Iris versicolor* from the 
+`iris` dataset perform the following transformations and provide an assessment 
+of the efficacy of each one, including any appropriate graphics. (NOTE: you should
+use the same transformation for both sets of observations)
+
+Produce chunks for each:
+
+1) log transformation
+2) square-root transformation
+3) reciprocal transformation
+
+### Exercise 01-2
+Choose the "best" of these transformations, and test the following 
+hypothesis: *Iris setosa* petals are longer than 
+*Iris versicolor* petals using the appropriate parametric test function.
+
+Make sure to include
+1) Hypotheses (commented)
+2) Function and output
+3) Decision (commented)
+
+
+## Part 02: Non-parametric tests
+
+### Exercise 02
+Use the sign test to answer this question: The weights of fifty mice were
+measured before and after an antibiotic treatment. 
+Thirty seven of fifty mice lost weight after treatment. 
+Does the antibiotic cause weight loss?
+
+Make sure to include
+1) Hypotheses (commented)
+2) Function and output
+3) Decision (commented)
+
+
+### Exercise 03
+#Use the Wilcoxon signed-rank test to answer the following question: Do
+*Iris setosa* and *Iris virginica* sepal lengths differ significantly? 
+
+Make sure to include
+1) Hypotheses (commented)
+2) Function and output
+3) Decision (commented)
+
+### Exercise 04
+Use the Kruskal-Wallace test to answer the following question: Do the petal widths
+differ among the different Iris species? 
+
+Make sure to include
+1) Hypotheses (commented)
+2) Function and output
+3) Decision (commented)

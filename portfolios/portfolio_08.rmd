@@ -1,0 +1,120 @@
+---
+title:  Biol/Math 218 Portfolio 8
+subtitle: The normal distribution and Z-transformation
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../knit_html"
+    )
+  })
+---
+
+## Introduction 
+In this portfolio, you will demonstrate your skills recognizing a normal distribution and 
+performing a Z-transformation. 
+Answers to each **question** should be entered in the 
+designated `Answer:` block. All **exercises** need to be done within `r{}` chunks, with any 
+non-code commented out with `#`. Use the `print()` function to show results of calculations.
+
+- Total exercises: **02**
+- Total questions: **08**
+
+## Part 01: Normal distribution ################################################
+
+In R, you can estimate a normal distribution using the rnorm() function.
+
+### Exercise 01-1
+Run the following code
+```{r, normal_distribution} 
+x <- rnorm(n = 100, mean = 0, sd = 1)
+plot(density(x), main = "Example Normal Distribution", xlab = "Values",
+     xlim = c(-10, 10), lwd = 3, col = "red")
+```
+**Question 01**: What are the mean and standard deviation of this normal distribution?
+
+`Q01 Answer:`
+
+**Question 02**: What is the name of this type of normal distribution?
+
+`Q02 Answer:`
+
+### Exercise 01-2
+If you notice, the curve is not perfectly smooth. Run 
+a new copy of the code below, modifying rnorm() to increase smoothness. 
+Including a graphical output. 
+
+
+**Question 03**: What is this phenomenon called?
+
+`Q03 Answer:`
+
+### Exercise 01-3
+Change the standard deviation and provide the graphical output
+
+**Question 04**: What happened to the shape of the curve?
+
+`Q04 Answer:`
+
+
+
+### Exercise 01-4
+Change the mean and provide the graphical output
+
+**Question 05**: What happened to the shape of the curve?
+
+`Q05 Answer:`
+
+## Part 02: The Z-transformation
+
+A Z-transformation lets us use the standard normal distribution to ask questions about
+a population of continuous numerical observations
+
+**Question 06**: What information do we need to know to perform a z-transformation?
+
+`Q06 Answer:`
+
+### Exercise 02-1
+
+In a code chunk
+
+1) Call the `iris` data and extract out the *Iris setosa* petal lengths
+2) Assess the normality of these observations graphically
+
+**Question 07**: Do the petal lengths pass the eyeball test?
+
+`Q07 Answer:`
+
+### Exercise 02-2
+Assuming that all observations in the `iris` data set is representative
+of the entire *Iris* population for each *Iris* species, what is the population mean 
+and standard deviation of *Iris setosa* petal lengths?
+
+### Exercise 02-3
+Let's say that *Iris setosa* are considered more attractive to pollinators if 
+they have petals longer than 1.6 cm. Using the Z-transformation, determine what proportion of 
+*Iris setosa* petal lengths are wider than the 1.6 cm.
+
+Make sure to include:
+1) Hypotheses (commented)
+2) All calculations
+3) P-value using the `pnorm()` function. 
+4) Decision (commented)
+
+
+**Question 08**: Given this preference by pollinators, what do you think 
+will happen to the proportion of individuals in the`Iris setosa` population 
+that have petals longer than 1.6 cm over time? Why?
+
+`Q08 Answer:`
+
+

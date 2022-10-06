@@ -1,52 +1,90 @@
 ---
+title:  Biol/Math 218 Portfolio 3
+subtitle: Summary statistics and data exploration
+author: Your Name Here
 output:
-  word_document:
-    reference_docx: "../templates/word_template.docx"
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../knit_html"
+    )
+  })
 ---
 
-# Biostatistics (Biol/Math 218) Portfolio 3 
-# Summary statistics and data exploration
+## Introduction 
+In this portfolio, you will demonstrate your skills exploring data and producing summary 
+statistics. Answers to each **question** should be entered in the 
+designated `Answer:` block. All **exercises** need to be done within `r{}` chunks, with any 
+non-code commented out with `#`. Use the `print()` function to show results of calculations.
 
-**Name:**
+- Total exercises: **08**
+- Total questions: **04**
 
-Answer all questions to the best of your ability. All r code needs to 
-be within properly labeled code block and all code needs to work properly, 
-so double check your work!
+## Part 01: Basic Math in R
 
-## Exercise 01: Basic mathematical functions
+### Exercise 01
+Consider this data: `11, 12, 13, 14, 14, 13, 12, 11`
 
-Consider this data: 11, 12, 13, 14, 14, 13, 12, 11
+In a code chunk below, produce a vector of the above data and determine 
+these using the built-in functions in `r{}`
 
-In a code chunk below, produce a vector of the above data and determine these using the built-in functions in r
   1) Number of observations
   2) Sum of observations
   3) Highest observation
   4) Lowest observation
 
+## Part 02: Summary statistics 
 
-### Exercise 02: In a code chunk, calculate the mean of Iris sp. sepal widths both using the mean equation and using the mean() function.
+### Exercise 02
+In a code chunk, calculate the mean of *Iris* sp. sepal widths 
+both using the mean equation and using the `mean()` function.
 
-## Question 01: How do your results from each calculation compare?
+**Question 01**: How do your results from each calculation compare?
 
-## Exercise 03: In a code chunk, calculate the mean of Iris setosa sepal widths
+`Q01 Answer:`
 
+### Exercise 03
+In a code chunk, calculate the mean of *Iris setosa* sepal widths, feel
+free to use the `mean()` function from now on.
 
-## Exercise 04: Write a code chunk to calculate:
-  1) Range of Iris setosa sepal widths
-  2) Median of the Iris setosa sepal widths
+### Exercise 04
+In a code chunk, calculate
 
-## Question XX: Is there a skew to the Iris setosa sepal width data? If so, what direction and explain your reasoning
+  1) Range of *Iris setosa* sepal widths
+  2) Median of the *Iris setosa* sepal widths
 
-## Exercise XX: Write a code chunk to calculate the variance of the Iris versicolor petal lengths using the var() function.
+**Question 02**: Is there a skew to the *Iris setosa* sepal width data? 
+If so, what direction and explain your reasoning?
 
-## Exercise XX: Write a code chunk to calculate the standard deviations of Iris virginica petal lengths using the standard deviation equation and using the sd() function.
+`Q02 Answer:`
 
-## Exercise XX: Write a chode chunk using summary() for the entire Iris dataset. 
+### Exercise 05
+Write a code chunk to calculate the variance of the *Iris versicolor* 
+petal lengths using the variance equation as well as the `var()` function.
 
+### Exercise 06
+Write a code chunk to calculate the standard deviations of *Iris virginica* petal 
+lengths using the standard deviation equation and using the `sd()` function.
 
-### Question XX: What are histograms used to illustrate?
+### Exercise 07
+Write a chode chunk using `summary()` for the entire *Iris dataset*.  (This is
+a great way to get all summary statistics all at once)
 
-## Exercise XX: Run the following code to produce a histogram
+## Part 03: Histograms
+
+**Question 03**: What are histograms used to illustrate?
+
+`Q03 Answer`
+
+### Exercise 08-1 Run the following code to produce a histogram
 
 ```{r, sepal_histogram}
 data(iris) # Use the built-in Iris data set
@@ -55,31 +93,14 @@ hist(iris$Sepal.Length, col = "lightblue", main = "Iris sepal length",
         xlab = "Sepal length")
 ```
 
-## Exercise XX: In a new code chunk below, recreate this histogram for Iris petal width and change the color.
+### Exercise 08-2 In a new code chunk below, recreate this histogram for *Iris* petal width and change the color.
 
-Fun code: Run this chunk to see the built-in colors in R
-```{r, color_grid}
-pdf()
-showCols <- function(cl = colors(), bg = "grey",
-                     cex = 0.75, rot = 30) {
-    m <- ceiling(sqrt(n <- length(cl)))
-    length(cl) <- m * m; cm <- matrix(cl, m)
-    require("grid")
-    grid.newpage(); vp <- viewport(w = .92, h = .92)
-    grid.rect(gp = gpar(fill = bg))
-    grid.text(cm, x = col(cm) / m, y = rev(row(cm))/m, rot = rot,
-              vp = vp, gp = gpar(cex = cex, col = cm))
-  }
-showCols(cl = colors(), bg= "gray33", rot = 30, cex = 0.75)
-dev.off()
-```
-
-## Question XX: Run each of the three code chunks below, identify the shape of each.
+**Question 04**: Run each of the three code chunks below, identify the shape of each.
 
 ```{r, histogram_1}
 hist(rbeta(10000,5,2), main = "", xlab = "", col = "darkred")
 ```
-
+`Q04_1 Answer:`
 ```{r, histogram_2}
 mu1 <- log(1)
 mu2 <- log(50)
@@ -98,8 +119,25 @@ histDistFunc <- function (n,cpct, mu1, mu2, sig1, sig2) {
 histData <- histDistFunc(n = 100, cpct, mu1, mu2, sig1, sig2)
 hist(log(histData), main = "", col = "darkred")
 ```
-
+`Q04_2 Answer:`
 ```{r, histogram_3}
 
 hist(rbeta(10000, 1, 1), main = "", xlab = "", col = "darkred")
+```
+`Q04_1 Answer:`
+
+
+Fun code: Run this chunk to see the built-in colors in R
+```{r, color_grid}
+showCols <- function(cl = colors(), bg = "grey",
+                     cex = 0.75, rot = 30) {
+    m <- ceiling(sqrt(n <- length(cl)))
+    length(cl) <- m * m; cm <- matrix(cl, m)
+    require("grid")
+    grid.newpage(); vp <- viewport(w = .92, h = .92)
+    grid.rect(gp = gpar(fill = bg))
+    grid.text(cm, x = col(cm) / m, y = rev(row(cm))/m, rot = rot,
+              vp = vp, gp = gpar(cex = cex, col = cm))
+  }
+showCols(cl = colors(), bg= "gray33", rot = 30, cex = 0.75)
 ```

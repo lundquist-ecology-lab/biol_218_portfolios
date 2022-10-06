@@ -1,0 +1,125 @@
+---
+title:  Biol/Math 218 Portfolio 6
+subtitle: Hypothesis testing and error
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../knit_html"
+    )
+  })
+---
+
+## Introduction 
+In this portfolio, you will demonstrate your skills describing hypotheses and Type I and
+Type II error.
+
+- Total exercises: **01**
+- Total questions: **12**
+
+## Part 01: Hypothesis testing
+
+Identify whether each of the following statements is more appropriate as the 
+null hypothesis or as the alternative hypothesis in a test: 
+
+**Question 01**: The number of hours high school spend watching television 
+affects how well they do on standardized tests.
+
+`Q01 Answer:`
+
+**Question 02**: Smoking leads to increased chance of developing lung cancer.
+
+`Q02 Answer:`
+
+**Question 03**: Eating fast food has no effect on kidney function.
+
+`Q03 Answer:`
+
+**Question 04**: Bears do not like honey.
+
+`Q04 Answer:`
+
+**Question 05**: Global temperatures are unaffected by increases in 
+carbon dioxide levels in the atmosphere.
+
+`Q05 Answer:`
+
+### Exercise 01
+State the most appropriate null and alternative hypotheses for 
+#each of the following experiments or observational studies: 
+
+A test of whether eating candy causes increased chance of developing cavities
+
+`H_0:`
+
+`H_A:`
+
+An experiment to test whether a pesticide impacts growth rates of a pollinator
+
+`H_0:`
+
+`H_A:`
+
+A test of whether mail-in ballots is preferred by older voters
+
+`H_0:`
+
+`H_A:`
+
+A test of whether urbanization impacts biodiversity downstream.
+
+`H_0:`
+
+`H_A:`
+
+## Part 02: P-values
+
+For the example above about urbanization, the researcher found that the 
+average ($\bar{x}$) number of insect species downstream was 20 $\pm{}$ 5 species and
+upstream average was 30 $\pm{}$ 2 species. She calculated a P-value of 0.015. 
+
+**Question 06**: What is the standard $\alpha$?
+
+`Q06 Answer:`
+
+**Question 07**: What is the conclusion that can be drawn from this test?
+
+Note: Exact wording is important here.
+
+`Q06 Answer:`
+
+## Part 03: Type I and Type II error
+
+**Question 08**: What is Type I error?
+
+`Q08 Answer:`
+
+**Question 09**:  What is Type II error?
+
+`Q09 Answer:`
+
+**Question 10**: Imagine that you are using a random sample of data to test a null hypothesis. 
+Answer whether the following statement is true or false: A parameter estimate 
+with high sampling error will result in a test with a higher Type I error rate 
+compared to an estimate with low sampling error.
+
+`Q10 Answer:`
+
+**Question 11**: What effect does reducing the value of the significance level from 0.05 to 0.01 have on 
+the probability of committing a Type I error?
+
+`Q10 Answer:`
+
+**Question 12**: What effect does reducing the value of the significance level from 0.05 to 0.01 have on 
+the probability of committing a Type II error?
+
+`Q12 Answer:`

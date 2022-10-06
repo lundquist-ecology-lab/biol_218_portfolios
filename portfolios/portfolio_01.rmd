@@ -14,7 +14,7 @@ output:
 knit: (function(input, ...) {
     rmarkdown::render(
       input,
-      output_dir = "../html"
+      output_dir = "../knit_html"
     )
   })
 ---
@@ -24,7 +24,7 @@ knit: (function(input, ...) {
 In this first portfolio, you will demonstrate your knowledge of the basics of sampling 
 and data types. Answers to each **question** should be entered in the designated `Answer:` block. 
 All **exercises** need to be done within `r{}` chunks, with any 
-non-code commented out with **#**.
+non-code commented out with `#`.
 
 - Total exercises: **01**
 - Total questions: **13**

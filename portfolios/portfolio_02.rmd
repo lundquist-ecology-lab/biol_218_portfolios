@@ -8,13 +8,13 @@ output:
     thumbnails: true
     lightbox: true
     gallery: false
-    highlight: tango
+    highlight: tangoS
     downcute_theme: "chaos"
     toc_depth: 3
 knit: (function(input, ...) {
     rmarkdown::render(
       input,
-      output_dir = "../html"
+      output_dir = "../knit_html"
     )
   })
 ---
@@ -22,12 +22,12 @@ knit: (function(input, ...) {
 ## Introduction
 
 In this portfolio, you will demonstrate your skills at uploading data and doing basic 
-data exploration and plotting. Answers to each **question** should be entered in the 
+data manipulation and plotting. Answers to each **question** should be entered in the 
 designated `Answer:` block. All **exercises** need to be done within `r{}` chunks, with any 
-non-code commented out with **#**.
+non-code commented out with `#`. Use the `print()` function to show results of calculations.
 
-- Total exercises: ****
-- Total questions: ****
+- Total exercises: **07**
+- Total questions: **06**
 
 ## Part 01: Dealing with data
 
@@ -66,10 +66,10 @@ barplot(max_temp,
         main = "Maximum Temperatures in a Week",
         ylab = "Degree Celsius",
         xlab = "Day",
-        ylim = c(0, 30), 
+        ylim = c(0, 30),
         names.arg = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"),
         col = "darkred",
-        horiz = FALSE) 
+        horiz = FALSE)
 
 ```
 

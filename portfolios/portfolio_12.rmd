@@ -1,0 +1,103 @@
+---
+title:  Biol/Math 218 Portfolio 12
+subtitle: Correlation and regression
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../knit_html"
+    )
+  })
+---
+
+## Introduction 
+In this portfolio, you will demonstrate your skills at utilizing correlation and regression.
+Answers to each **question** should be entered in the 
+designated `Answer:` block. All **exercises** need to be done within `r{}` chunks, with any 
+non-code commented out with `#`. Use the `print()` function to show results of calculations.
+
+- Total exercises: **02**
+- Total questions: **04**
+
+
+## Part 01: Correlation 
+
+**Question 01**: What are the assumptions of a correlation?
+
+`Q01 Answwer:`
+
+For every three credit-hour class, students spend approximately 48 hours
+in class during a 16 week semester. While many students attend class
+regularly, some do not and it is thought that this impacts their
+performance in the glass (measured by their final grade out of 100).
+
+The grades and total amount of time spend in class pf fifteen students 
+in an introductory chemistry class were collected below:
+
+`Total hours in class: 42, 48, 48, 30, 24, 48, 33, 45, 42, 48, 15, 21, 30, 48, 42`
+
+`Final grade out of 100: 90, 82, 92, 65, 40, 72, 55, 88, 82, 70, 35, 88, 82, 95, 91`
+
+In separate code chunks
+
+### Exercise 01-1
+Display the relationship between arrival dates of males and females graphically.
+
+**Question 02: Describe the pattern briefly. Is there a relationship? 
+Is it positive or negative? Is it linear or nonlinear? Is it weak or strong?
+
+`Q02 Answer:`
+
+### Exercise 01-2
+Using a Spearman correlation, estimate the correlation coefficient (r).
+
+Make sure to include:
+1) Hypotheses (commented)
+2) Function and output
+3) Decision (commented)
+
+## Part 2: Regression
+
+**Question 03**: What are the assumptions of a regression?
+
+`Q03 Answer:`
+
+Soil nutrients are important for plant growth and nutrients (like nitrogen and phosphorus) 
+can be added to soil to increase plant growth. However, does nutrient
+addition increase plant biodiversity? Researchers wanted to test this and
+added either 0, 1, 2, 3, or 4 additional nutrients to a plot 
+allowed the plants to grow, and recorded the total number of
+plant species found within the plot. The data is below:
+
+Nutrients added: 0, 0, 0, 1, 2, 3, 1, 3, 4, 4
+Number of plant species: 36, 36, 32, 34, 33, 30, 20, 23, 21, 16
+
+### Exercise 02
+In a code chunk
+
+1) Produce a scatter plot of these data, properly assigning X and Y variables.
+2) Use the `lm()` function to produce the line of best fit and overlay it on 
+your plot
+4) Provide the hypotheses (commented)
+3) Produce `summary()` of your `lm() `function
+4) Decision (commented)
+
+**Question 04**: What percentage of the variation in the number of plant species is 
+"explained" by the number of nutrients added?
+
+
+
+
+
+
+
+

@@ -1,0 +1,134 @@
+---
+title:  Biol/Math 218 Portfolio 9
+subtitle: The t-test suite
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../knit_html"
+    )
+  })
+---
+
+## Introduction 
+In this portfolio, you will demonstrate your skills at utilizing t-tests.
+Answers to each **question** should be entered in the 
+designated `Answer:` block. All **exercises** need to be done within `r{}` chunks, with any 
+non-code commented out with `#`. Use the `print()` function to show results of calculations.
+
+- Total exercises: **03**
+- Total questions: **05**
+
+## Part 1 One sample t-test 
+
+We can use the one sample t-test to compare a sample mean to a population mean when
+we do not know the population standard deviation. (Which is typically the case)
+
+**Question 01**: What are the assumptions of a one sample t-test
+
+`Q01 Answer:`
+
+### Exercise 01-1
+Lets say we sample five *Iris* flowers randomly from the *Iris* population and 
+measure their petal lengths. We find that they are 1.6, 1.5, 1.5, 1.4, and 1.7
+cm. Using your one sample t-test equation and the `qt()` function, 
+determine if these five are representative members of the Iris population. 
+
+Remember, alpha = 0.05 and this is a two-tailed test
+Also, the absolute values of `qt()` should be considered, it does not matter
+if they are positive or negative
+
+Make sure to include:
+1) Hypotheses (commented)
+2) All calculations
+3) Test statistic using `qt()` function. 
+4) Decision (commented)
+
+### Exercise 01-2
+
+Calculate the 95% CI for the sample mean using the `qt()` as above
+
+### Exercise 01-3
+Use the `t.test()` function to check your answer from above. Your 
+results should be identical.
+
+## Part 02: Paired t-test
+
+**Question 02**: What makes data paired?
+
+`Q02 Answer:`
+
+**Question 03**: What are the assumptions of the paired t-test?
+
+`Q03 Answer:`
+
+There is sometimes a disconnect between how well a beginner thinks they will do and how 
+they actually perform. Take the "HorseBeginners" data 
+from the "PairedData" package and compare the actual and imaginary performance of 
+beginner equestrians. 
+
+
+The data can be acquired from the `PairedData` library
+```{r, horse_beginners_data, include = FALSE}
+library(PairedData)
+data(HorseBeginners)
+```
+
+### Exercise 02-1
+Test the assumptions for the paired t-test and include graphical output.
+
+### Exercise 02-2
+Use the paired t-test to determine if there is a difference between
+actual and imaginary equestrian performance.
+
+Make sure to include:
+1) Hypotheses (commented)
+2) All calculations
+3) Test statistic using `qt()` function. 
+4) Decision (commented)
+
+### Exercise 02-3
+Rerun your paired t-test from above using the built-in`t.test()` function
+
+## Part 03: Two sample t-test
+
+**Question 04**: What is the pooled variance?
+
+`Q04 Answer:`
+
+**Question 05**: What are the assumptions of the two sample t-test?
+
+`Q05 Answer:`
+
+Scientists were interested in increasing plant yields (measured as weight) by treating 
+plants with a new type of fertilizer. Using the "PlantGrowth" 
+data (bult-in), compare the means of the "trt1" group and the "ctrl" group. 
+
+### Exercise 03-1
+Check the assumptions of the two sample t test, including the F test and
+provide a graphical output.
+
+### Exercise 03-2
+Using the appropriate form of the two sample t-test, test whether there is a
+difference between the control group and treatment one group.
+
+Make sure to include:
+1) Hypotheses (commented)
+2) All calculations
+3) Test statistic using `qt()` function. 
+4) Decision (commented)
+
+### Exercise 03-3
+Calculate the 95% confidence intervals (remember we consider the absolute value of t)
+
+### Exercise 03-4
+Rerun your t-test above using the built-in built-in`t.test()` function

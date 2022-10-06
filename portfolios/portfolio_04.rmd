@@ -1,0 +1,112 @@
+---
+title:  Biol/Math 218 Portfolio 4
+subtitle: Summary statistics and data exploration
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../knit_html"
+    )
+  })
+---
+
+## Introduction 
+In this portfolio, you will demonstrate your skills describing sampling distributions
+and calculating standard error. Answers to each **question** should be entered in the 
+designated `Answer:` block. All **exercises** need to be done within `r{}` chunks, with any 
+non-code commented out with `#`. Use the `print()` function to show results of calculations.
+
+
+- Total exercises: **04**
+- Total questions: **04**
+
+## Part 01: Sampling distribution
+
+### Exercise 01-1
+Using the sample() function, take a random sample of highway miles per gallon 
+of 50 cars from the `mpg` data set without replacement.
+
+Hint: `sample(x = , size = , replace = T or F)`
+
+### Exercise 01-2
+Plot a histogram of the observations.
+
+
+### Exercise 02 
+Use the below function to take the mean of 50 random samples of highway miles per gallon
+1000 times to produce a sampling distribution. 
+
+NOTE: it will not work unless you fill in the blanks below
+
+```{r, cars_sampling_distribution, eval = FALSE}
+est.means <- NA # Blank vector named est.means
+
+for (i in 1:1000) { # Loop function 1000 times
+    x <- sample(x = , size = , replace = ) # Take random samples, you need to
+                                           # fill in x = , size  =, and replace = ,
+                                           # for this to work
+    est.means[i] <- mean(x)
+}
+```
+**Once you fix the code, delete `, eval = FALSE` in the chunk header.** 
+
+**Question 01**: What does the `i` represent above?
+
+`Q01 Answer:`
+
+### Exercise 02-1
+Produce a histogram of the resulting means
+
+**Question 02**: What is the mean of all observations of hwy in the mpg dataset? 
+
+`Q02 Answer:`
+
+**Question 03**: Approximately how many times out of 1000 did your sampling
+correctly estimate that mean?
+
+`Q03 Answer:`
+
+### Exercise 02-2 
+Now run the same analysis from above, below, but change the sample size to 5.
+
+**Question 04**: How does the histogram of the samples of size 5 compare to the 
+histogram of sample size 50? Explain why. Hint: Look at the x axis.
+
+`Q04 Answer:`
+
+
+## Part 03: Standard error and 95% CI of the mean
+
+
+### Exercise 03-01
+Here is some data on systolic blood pressure:
+`112, 128, 108, 129, 125, 153, 155, 132, 137, 152, 109, 150, 152, 130, 128`
+
+In a code chunk, find the sample size, sample mean, variance, and standard deviation
+
+### Exercise 03-02
+In a code chunk, calculate the standard error of the mean
+
+
+### Exercise 03-03
+Using the 2SE convention, calculate an approximate 95% CI for the mean and 
+provide the upper and lower limits.
+
+
+### Exercise 04
+
+Now, in a code chunk, calculate all the same above again (Exercise 03-01 through -03), but 
+instead use sepal widths of *Iris virginica*.
+
+
+
+

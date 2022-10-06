@@ -1,0 +1,74 @@
+---
+title:  Biol/Math 218 Portfolio 10
+subtitle: The analysis of variance
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../knit_html"
+    )
+  })
+---
+
+## Introduction 
+In this portfolio, you will demonstrate your skills at utilizing ANOVA.
+Answers to each **question** should be entered in the 
+designated `Answer:` block. All **exercises** need to be done within `r{}` chunks, with any 
+non-code commented out with `#`. Use the `print()` function to show results of calculations.
+
+- Total exercises: **01**
+- Total questions: **04**
+
+## One-way analysis of variance (ANOVA)
+
+**Question 01**: What are the hypotheses for the ANOVA (assume you have three groups)?
+
+`Q01 Answer:`
+
+**Question 02**: What are the assumptions of the ANOVA?
+
+`Q02 Answer:`
+
+### Exercise 01-1
+You are interested in whether there is a different herbicide treatments impacted
+the growth of corn plants. Using an ANOVA, compare the different treatments (including 
+e control) and make a statement about whether they cause differences in growth. 
+
+Use the `PlantGrowth` data set from `Portfolio 09`.
+
+Make sure to include:
+1) Hypotheses (commented)
+2) Calculate the appropriate sum of squares
+3) Calculate the mean squares using the sum of squares
+4) Calculate the F statistic
+5) Calculate a p-values based on your F
+6) Decision (commented)
+
+
+### Exercise 01-2
+Use the built-in ANOVA function(s) to produce an ANOVA table including
+the SS, MS, F, and p-value(s). 
+
+**Question 03**: Why is it appropriate to now run a post hoc test?
+
+`Q03 Answer:`
+
+### Exercise 01-3
+
+Run a Tukey-Kramer test `TukeHSD()` to compare each group to each other. Include your
+interpretation.
+
+**Question 04**: Why does the Tukey-Kramer test use adjusted p-values?
+
+`Q04 Answer:`
+
+

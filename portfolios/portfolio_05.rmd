@@ -1,0 +1,129 @@
+---
+title:  Biol/Math 218 Portfolio 5
+subtitle: Probability
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../knit_html"
+    )
+  })
+---
+
+## Introduction 
+In this portfolio, you will demonstrate your skills describing probability rules. 
+Answers to each **question** should be entered in the 
+designated `Answer:` block. All **exercises** need to be done within `r{}` chunks, with any 
+non-code commented out with `#`. Use the `print()` function to show results of calculations.
+
+
+- Total exercises: **04**
+- Total questions: **06**
+
+## Part 01: Mutually exclusive vs. non-exclusive events
+
+Imagine that you have a population of 100 cats, 40 that are black with long fur, 
+30 that are white 
+with short fur, 10 that are black with short fur, and 20 that are white with
+long fur.
+
+**Question 01**: Are "black" and "long fur" mutually exclusive traits for this 
+population of cats?
+
+`Q01 Answer:`
+
+**Question 02**: Are "white" and "short fur" independent traits for this population of cats?
+
+`Q02 Answer:`
+
+## Part 02: Probability basics
+
+### Exercise 01
+A normal deck of cards has 52 cards, consisting of 13 each of four suits: 
+spades, hearts, diamonds, and clubs. Hearts and diamonds are red, while 
+spades and clubs are black. Each suit has an ace, nine cards numbered 2 
+through 10, and three face cards. The face cards are a jack, a queen, and a king. 
+Answer the following questions for a single card drawn at random from a 
+well-shuffled deck of cards.
+
+Answer the following `five` questions in a code chunks, show all calculations
+
+Make sure to write out the probability equation first
+Example: `Pr[Queen or Ace] = Pr[Queen] + Pr[Ace]`
+
+1) What is the probability of drawing a king of any suit?
+2) What is the probability of drawing a face card that is also a spade?
+3) What is the probability of drawing a card without a number on it?
+4) What is the probability of drawing an ace? 
+5) What is the probability of drawing a red ace? 
+
+**Question 03**: Are these events ("ace" and "red") mutually exclusive? Are they independent?
+
+`Q03 Answer:`
+
+**Question 04**: List two possible events that are mutually exclusive for a single draw from a deck of cards.
+
+`Q04 Answer:`
+
+## Part 03 General addition principle
+
+### Exercise 02
+When asked about their thoughts on the movie the Batman, 
+20% of movie-goers said that it was "excellent", 
+10% said that it was "pretty good"," 53% were "indifferent," 
+16% said that "it was pretty bad" and 1% said it was "especially horrible". 
+Only one answer per movie-goer was allowed.
+
+**Question 05**: Are these five possible answers mutually exclusive? Explain.
+
+`Q05 Answer:`
+
+Answer the following `two` questions in a code chunks, show all calculations
+Make sure to write out the probability equation first
+
+1) What is the probability that a movie-goer had a positive review of this movie?
+2) What is the probability that a movie-goer would review the movie as anything but 
+are anything other than especially horrible?
+
+## Part 04 General multiplication principle
+
+### Exercise 03
+Of a population of males, 60% were smokers. Suppose that men that smoke have
+a probability 20.7% of developing lung cancer during their lifetime. In contrast, men who 
+did not smoke had a 1.3% lifetime chance of developing lung cancer.
+
+Answer the following `five` questions in code chunks, show all calculations
+Make sure to write out the probability equation first
+
+1) What is the conditional probability of of a man from this population getting cancer, given that they smoked?
+2) Calculate the probability that a member of this population both smoked and eventually developed lung cancer.
+3) Using the general multiplication rule, calculate the probability that a member of this population both did 
+not smoke and never developed lung cancer.
+
+## Part 05 Bayes' Theorem
+
+### Exercise 04
+Using the information from `Part 04`, calculate the probability that a man from the 
+population above smoked, given that he had been diagnosed with lung cancer in a 
+code chunk below. 
+
+**Question 06**: What is the Bayes' theorem equation for the case described in this question?
+No need to put it in a code chunk.
+
+`Q06 Answer:`
+
+Now, each in their own code chunk
+
+1) Calculate the probability that a man in this population would develop lung cancer in his lifetime. 
+(Use the law of total probability.)
+2) Use Bayes' theorem to calculate the probability that a man from this population 
+smoked, given that he eventually developed lung cancer.
