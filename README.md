@@ -12,7 +12,7 @@ Instructor: Matthew Lundquist, Ph.D.
 If you are new to GitHub, you should check out this
 [blog post by Lauren Orsini](http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1).
 However, you only need to know how to download content from the
-repo.
+repo using RStudio (so keep reading!).
 
 We will utilize the built-in capabilities of RStudio to interface directly with this
 GitHub repository using the git version control software.
