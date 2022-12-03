@@ -1,5 +1,4 @@
 # Scatter plots in R
-
 # Call the data
 data(iris)
 
