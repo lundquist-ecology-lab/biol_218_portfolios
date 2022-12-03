@@ -1,8 +1,8 @@
 # How to import local data files
 
 # For .csv files
-data_name <- read.csv("/path/to/file_name.csv", head = TRUE
-                    , stringsAsFactors = TRUE)
+data_name <- read.csv("/path/to/file_name.csv", head = TRUE,
+                     stringsAsFactors = TRUE)
 head(data_name)
 
 # For .xlxs
