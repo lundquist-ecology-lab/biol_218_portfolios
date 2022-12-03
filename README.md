@@ -86,31 +86,37 @@ what you need to do in Windows or MacOS
     [cran.r-project.org](https://cran.r-project.org)
 2. Download the latest version of `RStudio` from
     [www.RStudio.org](https://www.rstudio.com/products/rstudio/download/)
-3. Open RStudio.app
+3. Open RStudio.app (or your RStudio Server instance on campus [Link](https://www.lundquistecology.com/rstudio-server-tutorial))
     ![img](./screenshots/linux/RStudio.png)
-4. Navigate to `File > New Project...`
+4. **Important**, under the terminal tab you will need to enter the  following commands.
+    * `git config --global user.email "you@example.com"`
+then
+    * `git config --global user.name "Your Name"`
+Replace "you@example.com" with your MMC email and "Your Name" with your name.
+5. Navigate to `File > New Project...`
     ![img](./screenshots/linux/new_project.png)
-5. Choose `Version Control`
+6. Choose `Version Control`
     ![img](./screenshots/linux/choose_vc.png)
-6. Choose `Git`
+7. Choose `Git`
     ![img](./screenshots/linux/choose_git.png)
-7. Set `Repository URL: https://github.com/lundquist-ecology-lab/biostats`
+8. Set `Repository URL: https://github.com/lundquist-ecology-lab/biostats`
     and set the `Project directory name: biostatistics` and
     set the project subdirectory as `~/Documents/biostatistics` (or whatever directory you want to
     use) then select `Create Project`
     ![img](./screenshots/linux/git_location.png)
-8. At this point RStudio should download everything from this GitHub
+9. At this point RStudio should download everything from this GitHub
     repository into your project directory (bottom right).
     ![img](./screenshots/linux/project_directory.png)
-9. You can now navigate folders directly in
+10. You can now navigate folders directly in
     RStudio. For example: Open `porfolios` and it will open
     the portfolios folder
     ![img](./screenshots/linux/folder_open.png)
-10. You can also open `.r` files, including the portfolios and other assignments. RStudio
+11. You can also open `.r` and `.rmd` files, including the portfolios and other assignments. RStudio
     will open an `Editor` window on the `Top Left` panel
     ![img](./screenshots/linux/file_example.png)
-11. These files can be edited, tested with the `-> Run` command and saved within your project directory
-12. Once you are done editing and testing your portfolios, the `.r` files can be [uploaded to Brightspace](https://mmm.brightspace.com/d2l/home/15700).
+12. These files can be edited, tested with the `-> Run` command and saved within your project directory
+13. Once you are done editing and testing your portfolios, the `.Rmd` files can be [uploaded to Brightspace]().
+
 
 When in doubt, you can also get the files off of GitHub by downloading them
 manually. To do this:
