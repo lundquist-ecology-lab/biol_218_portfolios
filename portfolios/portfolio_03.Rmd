@@ -75,7 +75,7 @@ Write a code chunk to calculate the standard deviations of *Iris virginica* peta
 lengths using the standard deviation equation and using the `sd()` function.
 
 ### Exercise 07
-Write a chode chunk using `summary()` for the entire *Iris dataset*.  (This is
+Write a code chunk using `summary()` for the entire *Iris dataset*.  (This is
 a great way to get all summary statistics all at once)
 
 ## Part 03: Histograms
