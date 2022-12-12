@@ -1,0 +1,43 @@
+---
+title:  Biol/Math 218 lesson
+subtitle: Introduction and basic data management
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input)
+  })
+---
+
+
+Today we will go over the syllabus and learn how to download and use code
+off of the [GitHub repository](https://github.com/lundquist-ecology-lab/biostatistics)
+and how to use RMarkdown to write R notebooks and produce and submit 
+portfolio assignments.
+
+## Part 1: Using GitHub
+
+If you are reading this in RStudio on your 
+[personal RStudio instance](https://www.lundquistecology.com/courses/biostatistics/biostats-intro/rstudio-server-tutorial), 
+you are read to go on to **Part 2**.
+
+## Part 2: Using Rmarkdown in RStudio
+
+RMarkdown files (`.Rmd`) are a combination of `R` (or `Python`) code blocks and
+the writeup language called `Markdown`, which is itself based on `HTML` which is
+the basic language of webpages. Using RMarkdown allows us to write in regular prose
+as well as write executable code in code blocks. It also allows us to export 
+that prose and code as a familiar format like `.docx` (Microsoft Word), `.pdf` (Adobe), 
+and `.html` (website). In our case, you will be exporting your portfolios as 
+quite stylish `.html`.
+
+Check out this [page]() for a run down of anatomy of a RMarkdown document as well
+as a step by step guide to export (or **knit**) a `.Rmd` file to `.html`.

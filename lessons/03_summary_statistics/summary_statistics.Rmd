@@ -17,8 +17,6 @@ knit: (function(input, ...) {
   })
 ---
 
-# Day 1
-
 Today we will be using summary statistics to describe data sampled from a 
 real-world population. 
 
@@ -203,8 +201,6 @@ In the code block below, use your insect length data from `practice_problem_1` a
 
 1. Calculate the total number of insects measured
 2. Calculate the proportion of insects measured that were from `2021`
-
-# Day 2
 
 Today, we will work together on visualizing our summary statistics from last session
 

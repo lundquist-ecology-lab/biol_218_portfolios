@@ -17,7 +17,7 @@ knit: (function(input, ...) {
   })
 ---
 
-# Day 1
+## Part 1: Figures in R
 
 Today we will be looking at the basics of displaying data using plots and 
 tables using R. 
@@ -27,7 +27,7 @@ The lesson can be found here: [Presenting Data](https://www.lundquistecology.com
 First we will look at some basic plots. The code for the plots
 are located in the [/basic_plotting](/basic_plotting) folder.
 
-## Histograms
+### Histograms
 
 ```{r histogram}
 # Histograms in R
@@ -42,7 +42,7 @@ hist(x, col = "#69b3a2", xlab = "Sepal Length",
     main = "Iris sepal lengths")
 ```
 
-## Scatter plot
+### Scatter plot
 
 ```{r scatter}
 # Scatter plots in R
@@ -60,7 +60,7 @@ plot(x, y, pch = 16, col = "#69b3a2", xlab = "Sepal Length",
      xlim = c(4, 8), ylim = c(1, 5))
 ```
 
-## Bar plot
+### Bar plot
 
 ```{r bar_plot}
 # Bar plot using ggplot2 library
@@ -83,7 +83,7 @@ ggplot(data, aes(x = condition, y = values)) +
   scale_fill_manual(values = c("#69b3a2", "#b37d69"))
 ```
 
-## Violin plot
+### Violin plot
 
 ```{r violin}
 # Violin plots using ggplot2 library
@@ -98,7 +98,7 @@ ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
   theme(legend.position = "none") # Hiding the legend
 ```
 
-## Time series
+### Time series
 
 ```{r time_series}
 # Time series in R
@@ -108,7 +108,7 @@ plot(co2, col = "#69b3a2", xlab = "year",
     ylab = expression(CO[2] ~ concentration))
 ```
 
-## Tables
+## Part 2: Tables in R
 
 Tables can be produced in R using `kable()` or you can use a program like
 Google Sheets or Microsoft Excel.
@@ -143,7 +143,7 @@ write.csv(subway_data, "subway_table.csv", row.names = FALSE)
 ```
 
 
-# Day 2
+## Part 3: Figure critique
 
 Based on these rules, we will look at and critique real-world plots. 
 
@@ -152,5 +152,4 @@ Based on these rules, we will look at and critique real-world plots.
 * Be honest, accurately portray the magnitude of changes (i.e. don’t over exaggerate your results)
 * Draw your plot clearly, excess stylistic components can hurt instead of help your presentation and use reasonably sized fonts
 
-Plots to review can be found [here](https://www.lundquistecology.com/courses/biostatistics/presenting-data/reviewing-figures)
-and [here](/figure_review).
+Plots to review can be found [here](https://www.lundquistecology.com/courses/biostatistics/presenting-data/reviewing-figures).
