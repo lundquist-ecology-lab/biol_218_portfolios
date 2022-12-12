@@ -231,7 +231,7 @@ observations. For example, the body length data includes a categorical variable
 `site`, which describes the different sites within the Bronx River from where 
 the insects were collected.
 
-![Bronx River sites](figure1.tiff)
+![Bronx River sites](figure1.jpg)
 
 We can use a function called `summarySE()` from the `Rmisc package` to get summary
 statistics from each group. 
