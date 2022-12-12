@@ -1,0 +1,203 @@
+---
+title:  Biol/Math 218 lesson
+subtitle: Estimating with uncertainty
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input)
+  })
+---
+
+This week we will be discussing sampling and the inherent uncertainty that
+comes along with it. We will also be discussing ways to measure uncertainty.
+
+## Part 1: Uncertainty in estimates
+
+**Estimate**: an inference about a population parameter based on a subsample of that
+population. Since samples are only a subset of the entire population, there is a 
+chance that estimates from repeated sampling from that population can be off by
+a particular amount. This is called a **sampling distribution**. We can model a
+sampling distribution in R. 
+
+
+```{r sampling_distribution}
+
+library(palmerpenguins)
+
+data <- na.omit(penguins$bill_length_mm) # Remove blank observations
+
+# There are a total of 342 observations of penguin bill length
+# For this, we will assume that there are 344 individuals in the population
+
+pop_mean <- mean(data)
+print(pop_mean)
+
+# Random sample of 5
+s_5 <- sample(data, size = 5, replace = FALSE)
+print(mean(s_5))
+
+# Random sample of 100
+s_100 <- sample(data, size = 100, replace = FALSE)
+print(mean(s_100))
+
+# Notice that the random sample of 100 is closer to the true population mean.
+# Higher sample size (n) results in less uncertainty
+
+# We can visualize this by taking the means of multiple sets of samples
+# using a for() loop
+
+# 1000 samples of 5
+dis_5 <- NULL
+for (i in 1:1000) {
+  x <- sample(data, size = 5, replace = FALSE)
+  dis_5[i] <- mean(x)
+}
+
+# Sampling distributions are reported as frequency histograms
+hist(dis_5, col = "#69b3a2", xlab = "Bill length", main = "Samples of 5")
+
+
+# 1000 samples of 5
+dis_100 <- NULL
+for (i in 1:1000) {
+  x <- sample(data, size = 100, replace = FALSE)
+  dis_100[i] <- mean(x)
+}
+
+# Sampling distributions are reported as frequency histograms
+hist(dis_100, col = "#69b3a2", xlab = "Bill length", main = "Samples of 100")
+```
+
+
+## Part 2: Measuring uncertainty
+
+It is extremely important for uncertainty to be measured and reported for proper 
+data analysis and interpretation. There are two ways of measuring uncertainty:
+
+**Standard error**: ± standard deviation of the sampling distribution.
+
+```{r standard_error}
+s100 <- sample(data, size = 100, replace = FALSE)
+
+# SE <- sd(y) / sqrt(n)
+SE_100 <- sd(s_100) / sqrt(100)
+print(SE_100)
+# Just like with the sampling distribution, SE will decrease
+# (i.e., uncertainty will decrease) as sample size increases.
+```
+
+**95% confidence intervals**: the range likely to contain the true population mean
+
+To calculate 95% CI manually, we calculate ȳ ± 2SE
+
+```{r conf_int}
+y_bar <- mean(s_100)
+print(y_bar)
+
+upper <- y_bar + SE_100
+lower <- y_bar - SE_100
+
+print(paste(lower, "±", upper, sep = " "))
+
+# We can round it
+print(paste(round(lower, 2), "±", round(upper, 2), sep = " "))
+```
+
+
+# Part 3: Visualizing uncertainty
+
+To visualize uncertainty we use error bars. Error bars can be either standard
+deviation, but more commonly either **standard error** or **95% CI**.
+
+**Standard error bars**
+
+We will need to use `ggplot2` to produce a plot with error bars. Here we will
+look at the `Palmer Penguin` data bill length data again, but subset it into the
+different species of penguin.
+
+```{r penguin_se_plot}
+library(palmerpenguins)
+data <- penguins
+data <- na.omit(penguins)
+
+print(levels(data$species))
+
+library(Rmisc)
+# The summarySE() function in the Rmisc library calculates mean, SD, SE, and CI
+
+penguin_summary <- summarySE(data = data, measurevar = "bill_length_mm",
+                            groupvar = "species")
+
+print(penguin_summary)
+
+# Bar plot with error bars
+library(ggplot2)
+
+y <- penguin_summary$bill_length_mm # set bill length as y for ease
+
+ggplot(penguin_summary, aes(x = species, y = y)) +
+  geom_bar(position = position_dodge(0.9), stat = "identity",
+          colour = "black", size = .3, fill = "#69b3a2") +
+  geom_errorbar(aes(ymin = y - se, ymax = y + se), colour = "black",
+        width = .1) +
+  ggtitle("Mean bill length ± SE") +
+  xlab("Site") +
+  ylab("Penguin bill length (mm)") +
+  scale_y_continuous(limits = c(0, 60),
+                     expand = c(0, 0), # Set y range
+                     breaks = 0:100 * 10) +
+  theme(panel.grid = element_blank()) +
+  theme(legend.position = "none")
+```
+
+The code to produce a plot with 95% CI error bars is very similar to ones above, 
+but `+ se` and `- se` in the `ggplot()` function is changed to `ci`.
+
+```{r penguin_ci_plot}
+library(palmerpenguins)
+data <- penguins
+data <- na.omit(penguins)
+
+print(levels(data$species))
+
+library(Rmisc)
+# The summarySE() function in the Rmisc library calculates mean, SD, SE, and CI
+
+penguin_summary <- summarySE(data = data, measurevar = "bill_length_mm",
+                            groupvar = "species")
+
+print(penguin_summary)
+
+# Bar plot with error bars
+library(ggplot2)
+
+y <- penguin_summary$bill_length_mm # set bill length as y for ease
+
+ggplot(penguin_summary, aes(x = species, y = y)) +
+  geom_bar(position = position_dodge(0.9), stat = "identity",
+          colour = "black", size = .3, fill = "#69b3a2") +
+  geom_errorbar(aes(ymin = y - ci, ymax = y + ci), colour = "black",
+        width = .1) +
+  ggtitle("Mean bill length ± 95% CI") +
+  xlab("Site") +
+  ylab("Penguin bill length (mm)") +
+  scale_y_continuous(limits = c(0, 60),
+                     expand = c(0, 0), # Set y range
+                     breaks = 0:100 * 10) +
+  theme(panel.grid = element_blank()) +
+  theme(legend.position = "none")
+```
+
+Reporting the 95% confidence intervals is particularly useful because in many cases,
+if the 95% CI are not overlapping between bars, you can infer that those means
+are statistically different from each other. 
+
