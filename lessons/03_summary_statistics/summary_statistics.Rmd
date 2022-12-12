@@ -125,7 +125,7 @@ print(inch_var)
 
 The **median**, like the mean, describes the measurements in the middle of a 
 frequency distribution. The **interquartile range** (IQR), or the middle 50% of the
-values in the data measures the spread of the measurements, similarly to standard
+values in the data. Measures the spread of the measurements, similarly to standard
 deviation.
 
 ```{r,  median_and_iqr}
@@ -159,8 +159,6 @@ k <- 0.75 * n
 k <- ceiling(k)
 third_quartile <- y[k]
 
-summary(y)
-
 # Note, if either j or k is an integer, you take the average of the two adjacent
 # observations.
 
@@ -168,6 +166,9 @@ summary(y)
 
 # Check work using the summary() function
 summary(y)
+
+# Visualize with a box plot
+boxplot(y, col = "#69b3a2", ylab = "y")
 ```
 
 ### Practice problem 02: Median and interquartile range
@@ -177,6 +178,7 @@ In the code block below, use your insect length data from `practice_problem_1` a
 1. Calculate the median larva body length
 2. Calculate the first and third quartile larva body length
 3. Check your work using the `summary()` function
+4. Visualize the median and interquartile range using a box plot
    
 ```{r practice_problem_2}
 ```
