@@ -152,4 +152,5 @@ Based on these rules, we will look at and critique real-world plots.
 * Be honest, accurately portray the magnitude of changes (i.e. don’t over exaggerate your results)
 * Draw your plot clearly, excess stylistic components can hurt instead of help your presentation and use reasonably sized fonts
 
-Plots to review can be found [here](https://www.lundquistecology.com/courses/biostatistics/presenting-data/reviewing-figures).
+Plots to review can be found [here](https://www.lundquistecology.com/courses/biostatistics/presenting-data/reviewing-figures)
+and [here](/figure_review).
