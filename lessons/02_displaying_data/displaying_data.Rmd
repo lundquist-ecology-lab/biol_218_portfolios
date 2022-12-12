@@ -1,0 +1,155 @@
+---
+title:  Biol/Math 218 lesson
+subtitle: Displaying data
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input)
+  })
+---
+
+# Day 1
+
+Today we will be looking at the basics of displaying data using plots and 
+tables using R. 
+
+The lesson can be found here: [Presenting Data](https://www.lundquistecology.com/coures/biostatistics/presenting-data)
+
+First we will look at some basic plots. The code for the plots
+are located in the [/basic_plotting](/basic_plotting) folder.
+
+## Histograms
+
+```{r histogram}
+# Histograms in R
+# Call the data
+data(iris)
+
+# Built-in plot() function
+x <- iris$Sepal.Length
+
+
+hist(x, col = "#69b3a2", xlab = "Sepal Length",
+    main = "Iris sepal lengths")
+```
+
+## Scatter plot
+
+```{r scatter}
+# Scatter plots in R
+# Call the data
+data(iris)
+
+# Built-in plot() function
+x <- iris$Sepal.Length
+y <- iris$Sepal.Width
+
+# R will automatically detect the data type and produce
+# a scatter plot
+plot(x, y, pch = 16, col = "#69b3a2", xlab = "Sepal Length",
+     ylab = "Sepal Width", main = "Iris sepal length vs. width",
+     xlim = c(4, 8), ylim = c(1, 5))
+```
+
+## Bar plot
+
+```{r bar_plot}
+# Bar plot using ggplot2 library
+values <- c(60, 20, 30, 20)
+condition <- c("Treatment", "Control", "Treatment", "Control")
+group <- c("Group 1", "Group 1", "Group 2", "Group 2")
+
+data <- data.frame(values, condition, group)
+
+library(ggplot2)
+
+# Stacked bars
+ggplot(data, aes(x = condition, y = values, fill = group)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = c("#69b3a2", "#b37d69"))
+
+# Bars side by side
+ggplot(data, aes(x = condition, y = values)) +
+  geom_bar(aes(fill = group), stat = "identity", position = "dodge") +
+  scale_fill_manual(values = c("#69b3a2", "#b37d69"))
+```
+
+## Violin plot
+
+```{r violin}
+# Violin plots using ggplot2 library
+data(iris)
+
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_violin() +
+  scale_fill_manual(values = c("#69b3a2", "#b37d69", "#b3699f")) +
+  xlab("Species")  +
+  ylab("Sepal length") +
+  ggtitle("Iris flower sepal lengths") +
+  theme(legend.position = "none") # Hiding the legend
+```
+
+## Time series
+
+```{r time_series}
+# Time series in R
+data(co2)
+
+plot(co2, col = "#69b3a2", xlab = "year",
+    ylab = expression(CO[2] ~ concentration))
+```
+
+## Tables
+
+Tables can be produced in R using `kable()` or you can use a program like
+Google Sheets or Microsoft Excel.
+
+```{r kable_table}
+# Producing tables using knitR library
+
+tmp <- tempfile(fileext = ".csv")
+download.file(url = "https://raw.githubusercontent.com/lundquist-ecology-lab/subway_map_analysis/main/data/subway_data.csv",
+            destfile = tmp)
+subway_data <- read.csv(tmp, header = TRUE, stringsAsFactors = TRUE)
+
+# Remove "id" and "units" column
+subway_data <- subway_data[c(-1, -7)]
+
+# Convert m2 to k2 and round
+subway_data$b_area <- round(subway_data$b_area / 1000000, 2)
+subway_data$g_area <- round(subway_data$g_area / 1000000, 2)
+
+library(knitr)
+
+# Produce table with more readable heading names and Markdown syntax
+kable(subway_data, col.names = c("Borough",
+                        "Subway Stations",
+                        "Stations near green spaces",
+                        "Total borough area (km<sup>2</sup>)",
+                        "Total green area (km<sup>2</sup>)"))
+
+# Export table as .csv to work with in other programs
+
+write.csv(subway_data, "subway_table.csv", row.names = FALSE)
+```
+
+
+# Day 2
+
+Based on these rules, we will look at and critique real-world plots. 
+
+* Make sure the data is visible - simple plots are typically better than overly complex ones
+* Display patterns in the data clearly
+* Be honest, accurately portray the magnitude of changes (i.e. don’t over exaggerate your results)
+* Draw your plot clearly, excess stylistic components can hurt instead of help your presentation and use reasonably sized fonts
+
+Plots to review can be found [here](https://www.lundquistecology.com/courses/biostatistics/presenting-data/reviewing-figures).
