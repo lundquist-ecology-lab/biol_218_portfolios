@@ -1,0 +1,198 @@
+---
+title:  Biol/Math 218 lesson
+subtitle: Probability
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input)
+  })
+---
+
+This week, we will be working through probability, a core concept in statistics. 
+
+Terms:
+
+- **Probability**: the proportion of random trials that result in a desired event occurs over a number of random trials
+- **Mutually exclusive event**: Two events that cannot happen simultaneously 
+
+We will be dealing with probabilities by building probability equations, and then
+converting them into syntax that R can recognize. 
+
+**Example probability equation**:
+
+`Pr[flipping heads] = 1/2`
+
+## Part 1: Probability distributions
+
+A probability distribution is the probabilities of all possible outcomes in a 
+random trial. 
+
+**Discrete probability distributions** can be produced for discrete numerical events. 
+
+For example the probabilities of rolling three fair six sided dice are:
+
+```{r three_six_sided_dice}
+library(dice)
+
+x <- getSumProbs(ndicePerRoll = 3, nsidesPerDie = 6, nkept = 3, dropLowest = FALSE)
+x <- data.frame(x[1])
+
+plot(x = x[, 1], y = x[, 2], xlab = "Sum of three dice", pch = 16)
+```
+
+
+**Continuous probability distributions** can be produced for continuous variables. 
+
+For example the probabilities of rolling three fair six sided dice are:
+
+```{r normal_distribution}
+y <- rnorm(10000000)
+
+plot(density(y), main = "", xlab = "y", ylab = "Probability density")
+```
+
+## Part 2: Addition rules
+
+If two events A and B are mutually exclusive
+
+`Pr[A OR B] = Pr[A] + Pr[B]`
+
+and the probability of an event not occurring is
+
+`Pr[not A] = 1 - Pr[A]`
+
+If A and B are not mutually exclusive we use the **general addition rule**:
+
+`Pr[A OR B] = Pr[A] + Pr[B] - Pr[A and B]`
+
+## Part 3: Multiplication rules
+
+If two events A and B are independent,
+
+`Pr[A AND B] = Pr[A] * Pr[B]`
+
+However, if events are dependent on one another, the 
+probabilities become a little more complicated. 
+
+We can visualize the probability of a sequence of dependent (or independent)
+events happening using probability trees.
+
+### Example: Probability trees
+
+Biological sex in turtles at birth is determined by 
+the temperature at which the eggs were incubated at. Turtle offspring
+incubated at 27.7 °C are 100% male, and those incubated above 31 °C are
+100% female. However, if the temperatures fluctuate between those two extremes, 
+there will be a mixture male and female hatchlings. 
+
+Let's say that under normal circumstances with fluctuating temperatures, there 
+is a 50% chance of a hatchling being female. However, if there are more 
+days closer to 31 °C, the probability is instead 80% of a hatchling being 
+female or male.
+
+Let's also suppose that under normal circumstances, there is a 15% chance of the 
+more days being above 31 °C and there is no chance of more days at or below 27.7 °C.
+
+What is the probability that a hatchling will be male under "normal" conditions?
+
+```{tree}
+                    Majority of days  |-------0.8--------> Female
+                    are above 31 °C   |
+                                      |
+    |---------0.15----------> Yes   --|    
+    |                                 |
+    |                                 |
+    |                                 |-------0.2--------> Male
+----|                                     
+    |                                 |-------0.5--------> Female
+    |                                 |
+    |                                 |
+    |--------0.85-----------> No    --|
+                                      |
+                                      |
+                                      |-------0.5-------> Male
+```    
+
+`Pr[hatchling is male] = Pr[male AND above 31] + Pr[male AND fluctuating]`
+
+```{r probability}
+p_hatch_m <- (0.15 * 0.2) + (0.85 * 0.5)
+print(p_hatch_m)
+```
+
+### Practice problem 1: Effect of global warming on turtle sex ratios
+
+It is important to consider the biological impacts of global changes and how
+they might impact different species. For example, the mean global temperature is
+increasing year after year and this could have a major impact on species with
+temperature-dependent sex determination like turtles. Lets say that in the next 
+100 years, the probability of the majority of days being above 31 °C increases to
+30%, how will that impact the sex ratio of turtle populations? 
+
+Below, fill out a new probability tree based on the new and calculate the probability that a 
+hatchling will be female. 
+
+```{new_tree}
+```
+
+`New equation`
+
+```{r new_prob}
+```
+
+What do you think would be the **biological significance** of this sort of global change?
+
+
+## Part 4: Conditional probabilities and Bayes' theorem
+
+**Conditional probability** is the probability that an event occurs given that
+another event occurs
+
+`Pr[A|B]`
+
+Using conditional probabilities, we can calculate the 
+overall probability of an event by invoking the **law of total probability**
+
+`Pr[hatchling female] = Pr[temps above 31 °C] * Pr[female|temps above 31 °C] + Pr[temps fluctuate] * Pr[female|fluctuate]`
+
+We can go further and determine the probability of two events happening, even if 
+they are dependent by using the *general **multiplaction rule**
+
+`Pr[A and B] = Pr[A] * Pr[B|A]`
+
+Note, it does not matter which event we label A or B.
+
+**Bayes' theorem** is a special use of conditional probabilities where
+
+`Pr[A|B] = (Pr[B|A] * Pr[A]) / Pr[B]`
+
+Bayes' theorem has a lot of use in the medical field. For example, it can be 
+used to detect false positives in medical diagnoses. 
+
+### Practice problem 2: Bayes' theorem
+
+Lets imagine a hypothetical deadly disease that we have a test to detect. The rate of
+correctly detecting a patient with this disease is  70%. We can call this the 
+**sensitivity** of the test. However, the rate at which patients without the disease
+are misdiagnosed in 4%. We call this a **false positive**. This sounds pretty good,
+but what is the probability that a patient that tests positive for the disease 
+actually has the disease?
+
+There are a lot of conditional probabilities here, so let's express them using 
+Bayes' theorem:
+
+`Pr[disease|positive] = (Pr[positive|disease] * Pr[disease]) / Pr[positive]`
+
+We will work through this together in class
+
+```{r Bayes_theorem}
+```
