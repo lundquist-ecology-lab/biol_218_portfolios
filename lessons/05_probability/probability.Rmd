@@ -50,9 +50,10 @@ plot(x = x[, 1], y = x[, 2], xlab = "Sum of three dice", pch = 16)
 ```
 
 
-**Continuous probability distributions** can be produced for continuous variables. 
+**Continuous probability densities** can be produced for continuous variables. 
 
-For example the probabilities of rolling three fair six sided dice are:
+Below is an example of the normal distribution, which is used as a probability 
+distribution used for many statistical tests.
 
 ```{r normal_distribution}
 y <- rnorm(10000000)
@@ -72,7 +73,7 @@ and the probability of an event not occurring is
 
 If A and B are not mutually exclusive we use the **general addition rule**:
 
-`Pr[A OR B] = Pr[A] + Pr[B] - Pr[A and B]`
+`Pr[A OR B] = Pr[A] + Pr[B] - Pr[A AND B]`
 
 ## Part 3: Multiplication rules
 
@@ -162,10 +163,10 @@ another event occurs
 Using conditional probabilities, we can calculate the 
 overall probability of an event by invoking the **law of total probability**
 
-`Pr[hatchling female] = Pr[temps above 31 °C] * Pr[female|temps above 31 °C] + Pr[temps fluctuate] * Pr[female|fluctuate]`
+`Pr[hatchling female] = Pr[temps above 31 °C] * Pr[female|temps above 31 °C] + Pr[temps fluctuate] * Pr[female|temps fluctuate]`
 
 We can go further and determine the probability of two events happening, even if 
-they are dependent by using the *general **multiplaction rule**
+they are dependent by using the **general multiplication rule**
 
 `Pr[A and B] = Pr[A] * Pr[B|A]`
 
