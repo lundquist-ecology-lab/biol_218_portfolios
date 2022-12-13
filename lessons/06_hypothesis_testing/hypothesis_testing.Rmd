@@ -1,0 +1,194 @@
+---
+title:  Biol/Math 218 lesson
+subtitle: Probability
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input)
+  })
+---
+
+Today we will be working through the concept of **hypothesis testing** as well
+as the basics of experimental design.
+
+## Part 1: Hypotheses and test statistics
+
+**Hypothesis testing** is comparing observations to an expected null 
+(or uninteresting) hypothesis. If our observations are different 
+than what we would expect from the null, we reject that null.
+
+- Null hypothesis (H_0): The parameter of interest is 0
+- Alternative hypothesis (H_A): The parameter of interest is not 0
+
+With hypothesis testing, we find evidence to reject the null, 
+not accept the alternative (the possible alternatives are potentially infinite).
+
+We state the hypotheses for any statistical test before we perform them.
+
+Example:
+
+`H_0: ybar = 0`
+
+`H_A: ybar != 0`
+
+
+A **test statistic** is the value calculated from our observations to 
+compare to the expected under the null. We figure out if our observations
+are interesting (**statistically significant**) by determining what the 
+probability is of finding our results when the null is true. 
+
+We do this by producing a **null distribution**, the probability distribution 
+of test statistics expected under the null.
+
+### Practice problem 1: Null distribution:
+
+In nature, it is common for animals to be sexually dimorphic, males and females
+look strikingly different from each other. In many species, including some birds
+and fishes, females, which are typically dull in color to protect them from being
+seen by predators, prefer to mate with males that are bright and colorful. This
+is thought to be a way for females to determine the quality of the male's genes. 
+We can use hypothesis testing to determine if a particular species has choosy
+mating like this. 
+
+Let's suppose that there is a species of river fish where males are either pale
+beige or bright red and the females are pale beige. We then run an experiment where
+we put a female into a tank with 200 males, 100 red and 100 pale, into a tank and observe which
+male the female chooses to mate with. We repeat this twenty times with different
+individuals each time. We find that red males were chosen 16 times and pale males
+were chosen four times.
+
+Is there a significant effect of male color on mating success? 
+
+Step 1: Report results
+
+Step 2: State hypotheses
+
+`H_0:`
+
+`H_A:`
+
+Step 3: Produce the null distribution
+
+```{r null_distribution}
+
+## Expected (assuming tank of 200 fish)
+
+fish_tank <- c(rep("red", times = 100), rep("pale", times = 100))
+
+red_mating_null <- NULL
+
+for (i in 1:10000000) {
+  x <- sample(fish_tank, size  = 20, replace = FALSE) # 20 random matings
+  y <- length(which(x == "red")) # Number of red matings
+  red_mating_null[i] <- y
+}
+
+# Calculate histogram, but do not draw it
+h <- hist(red_mating_null, plot = FALSE)
+h$density = h$counts / sum(h$counts)
+plot(h,freq=FALSE, col = "lightgray", 
+     ylab = expression("Probability under H  "[0]),
+     xlab = "Red Matings",
+     main = "Null distribution for the number of matings of red males",
+     xlim = c(0, 20))
+```
+
+We can now calculate our **P-value**, the probability of obtaining our results 
+given that the null is true. We can calculate the P-value here by taking the sum
+of the area under the curve of our null distribution where our results and any 
+more extreme results fall.
+
+This is a two-tailed test, so we are interested in both the high and low extremes.
+
+`High extremes: `
+
+`Low extremes: `
+
+We can then use the null distribution to determine the probability of those extremes
+occurring under the null.
+
+```{r p_values}
+# Color vector
+my_color <- ifelse(h$breaks <= 4, "purple", ifelse(h$breaks >= 16,
+          "purple", rgb(0.2, 0.2, 0.2, 0.2)))
+
+plot(h, freq = FALSE, col = my_color,
+          ylab = expression("Probability under H  "[0]),
+          xlab = "Matings",
+          main = "Null distribution for the number of matings of red males",
+          xlim = c(0, 20),
+          ylim = c(0, 0.18)
+          labels = TRUE)
+```
+
+Next, calculate the P-value
+
+```{r p_value}
+p_fish <- (0.001 + 0.003 + 0.012) + (0.001)
+```
+
+
+Finally, what is the conclusion based on the hypotheses and P-value based on an
+α of 0.05?
+
+`Conclusion`
+
+```{r final_plot}
+# Final plot
+plot(h,freq = FALSE, col = my_color,
+     ylab = expression("Probability under H  "[0]),
+     xlab = "Red Matings",
+     main = "Null distribution for the number of matings of red males",
+     xlim = c(0, 20)),
+text(3, 0.02, "Area  = 0.016", col = "purple", cex = 1.5)
+text(17, 0.02, "Area  = 0.001", col = "purple", cex = 1.5)
+text(3, 0.15, "P = 0.017", col = "darkblue", cex = 2)
+```
+
+## Part 2: Errors and experimental design
+
+There is always a chance that your conclusion is incorrect due to random chance.
+
+**Type I error**: Rejecting a true null hypothesis. The probability of 
+committing a Type I error = α. 
+
+**Type II error**: Failing to reject a false null hypothesis. 
+A test has more power if there is a lower likelihood of committing 
+a Type II error.
+
+The only way to deal with Type I error is to decrease your α, which decreases
+your Type I error rate but decreases your power (increases Type II error rate). 
+This can be dealt with in a limited way by increasing sample size.
+
+To determine the optimal sample size for a particular experiment where two groups
+are compared, we can use the following equation:
+
+`n = 8 * (sd / (0.5*ci))^2`
+
+Let's say that we suspect the population of flower petal width standard deviation
+to be 0.8 mm and we are interested in differences within a 95% confidence 
+interval of 0.4 mm, what sample size do we need to obtain?
+
+```{r sample_size}
+```
+
+We can also determine the sample size to obtain a power of 0.8, or 80% of the 
+the time the false null is rejected. Assuming the samples are normally 
+distributed and σ is equal between the two, we can use this equation:
+
+`n = 16 * (sd / D)^2` where `D = |mean_1 - mean_2|`
+
+Let's say that mean_1 = 0.2 and mean_2 = 0.6, calculate the sample size needed
+for a power of 0.8.
+
+```{r power}
+```

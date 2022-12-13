@@ -200,4 +200,3 @@ ggplot(penguin_summary, aes(x = species, y = y)) +
 Reporting the 95% confidence intervals is particularly useful because in many cases,
 if the 95% CI are not overlapping between bars, you can infer that those means
 are statistically different from each other. 
-
