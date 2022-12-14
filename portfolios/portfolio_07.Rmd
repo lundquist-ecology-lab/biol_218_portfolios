@@ -66,7 +66,7 @@ white fur. The difference in fur is controlled by a single gene that has two all
 the white allele (b), and the black allele (B). Since rabbits are diploid (2N), each
 individual has two alleles for the fur color gene. Individuals that have both black
 fur alleles (BB) or at least one black fur allele (Bb or bB), have black fur. White
-furred individuals have two copies of the white fur allele (bb). \
+furred individuals have two copies of the white fur allele (bb).
 
 All three genotypes exist in this population of rabbits and if having the white 
 allele does not impact fitness (survival and reproduction), then individuals 
