@@ -1,6 +1,6 @@
 ---
 title:  Biol/Math 218 lesson
-subtitle: Probability
+subtitle: Hypothesis testing and experimental design
 author: Your Name Here
 output:
   rmdformats::downcute:

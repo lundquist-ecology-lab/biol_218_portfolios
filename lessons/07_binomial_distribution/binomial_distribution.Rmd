@@ -1,0 +1,126 @@
+---
+title:  Biol/Math 218 lesson
+subtitle: Binomial distribution and the binomial test
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input)
+  })
+---
+
+This week we will be learning about proportions, the binomial distribution
+and the binomial test.
+
+## Part 1: Binomial distribution
+
+**Binomial distribution**: the distribution “successes” of many independent trials. 
+There are only two possible outcomes, success and non-success
+
+**Assumptions**
+
+- Each trial is independent of the other
+- The number of “n” trials is fixed
+- The probability of success, “p”, is the same for each trial
+
+`Pr[X successes] = (n X) * p * (1 - p)^n - x`
+
+`(n X) = n! / (X! * n - X)!`
+
+
+The proportion of `X` successes out of `n` trials:
+
+`phat = X / n`
+
+The population standard error:
+
+`sigma_phat = sqrt(p(1-p) / n)`
+
+95% confidence interval:
+
+`p' = X + 2 / n + 4 `
+
+`p' - 1.96 * sqrt((p' * (1 - p')) / (n + 4))`
+
+`p' + 1.96 * sqrt((p' * (1 - p')) / (n + 4))`
+
+## Part 2: Binomial test
+
+We can use the binomial distribution to test whether the number of successes 
+observed over a number of independent trials is different than what is expected
+from the null. We combine the probability getting the number of successes that
+we observed as well as getting more successes than we 
+
+### Example: Binomial test
+
+Probability of >= 22 successes
+n = 24
+
+`H_0: p = 0.5`
+
+`H_A: p != 0.5`
+
+
+```{r binom_test_example}
+
+pr22 <- factorial(24) / (factorial(22) * factorial(24 - 22))
+x <- pr22 * 0.5^22 * 0.5^(24 - 22)
+
+pr23 <- factorial(24) / (factorial(23) * factorial(24 - 23))
+y <- pr23 * 0.5^23 * 0.5^(24 - 23)
+
+pr24 <- factorial(24) / (factorial(24) * factorial(24 - 24))
+z <- pr24 * 0.5^24 * 0.5^(24 - 24)
+
+p <- 2 * (x + y + z)
+
+print(p)
+
+phat <- 22 / 24
+
+print(phat)
+
+# 95% CI interval
+
+p_prime <- (22 + 2) / (24 + 4)
+
+CI_minus <- p_prime - 1.96 * sqrt((p_prime * (1 - p_prime)) / (24 + 4))
+CI_plus <- p_prime + 1.96 * sqrt((p_prime * (1 - p_prime)) / (24 + 4))
+
+print(paste(CI_minus, "±", CI_plus, sep = " "))
+
+# Built-in R function
+binom.test(x = 22, n = 24, p = 0.5)
+```
+
+
+Note: The binomial test calculates an **exact** P-value
+
+### Practice problem 1: Binomial test, bird care
+
+
+In some species of birds, juveniles help other adult birds to raise offspring. 
+Scientists are unsure what the evolutionarily advantage of this sort of altruism 
+is in the wild, however, it is postulated that these juveniles are likely to be 
+preferentially helping adults that they are more closely related to (kin selection).
+To test this, 20 birds that each lived nearby two nests of adults, one with relatives,
+the other with non-relatives. It was observed that 16 of the birds helped their
+kin, while 4 helped the non-kin. 
+
+1. Is there preferential care? 
+2. What is the probability of success, including the 95% CI?
+
+`Hypotheses`
+
+```{r bird_binomial}
+```
+
+
