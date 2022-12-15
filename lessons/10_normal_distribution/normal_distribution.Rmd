@@ -63,7 +63,6 @@ p_zed <- 1-pnorm(q = zed)
 print(p_value)
 ```
 
-
 **Law of large numbers**: As you increase the sample size, mean and standard 
 deviation remains the same, but standard errors become smaller.
 
