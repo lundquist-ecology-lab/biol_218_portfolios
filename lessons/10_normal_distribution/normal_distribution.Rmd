@@ -88,7 +88,6 @@ for (i in 1:100) {
 # Sampling distributions are reported as frequency histograms
 hist(dis_100, col = "#69b3a2", xlab = "Bill length", main = "n = 1")
 
-
 # 100 samples of 2
 dis_100 <- NULL
 for (i in 1:100) {
