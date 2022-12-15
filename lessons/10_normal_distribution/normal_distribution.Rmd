@@ -1,0 +1,122 @@
+---
+title:  Biol/Math 218 lesson
+subtitle: Normal distribution and Z transformation
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input)
+  })
+---
+
+This week we are going to introduce the **normal distribution**. As the number 
+of observations of numerical data increase, they tend to form a bell-shaped 
+curve called the normal distribution or Gaussian distribution.
+
+Properties of the normal distribution
+
+- Symmetrical around the mean
+- Continuous, so the probability is measured as the area under the curve
+- Single mode
+- Mean is the highest point
+
+A **standard normal** curve has a mean of zero and a standard deviation of one
+
+
+The **Z distribution** can be used to calculate probabilities using the standard 
+normal distribution. It describes the probability that a random draw 
+from the standard normal distribution is greater than a given value
+
+A non-standard normal can be transformed to a standard normal using the 
+**Z transformation**.
+
+`Z = (Y - mu) / sigma`
+
+Let’s say we are interested in obesity in a hypothetical population of 
+squirrels in Central Park. Let’s say a squirrel is considered overweight 
+if they are more than 510 g.  We know that the average weight of squirrels 
+in central park is 500 g with a standard deviation of 50 g. Obviously, this 
+data is not from the standard normal because it does not have a mean of 0 and a 
+sigma of 1. However, we can use the Z transformation to figure out what 
+proportion of hypothetical squirrels in Central Park are obese.
+
+`Pr[Z > 510 g | mu = 500, sigma = 50 }`
+
+```{r z_transformation}
+y <- 510
+mu <- 500
+sigma <- 50
+
+zed <- (y - mu) / sigma
+print(zed)
+
+# Calculate P[Z]
+p_zed <- 1-pnorm(q = zed)
+print(p_value)
+```
+
+
+**Law of large numbers**: As you increase the sample size, mean and standard 
+deviation remains the same, but standard errors become smaller.
+
+**Central limit theorem**: the mean of a large random sample from any 
+population is approximately normally distributed
+
+We can play around with this using the code below and the `Palmer penguins` data
+```{r central_limit_theorem}
+
+library(palmerpenguins)
+
+data <- na.omit(penguins$bill_length_mm) # Remove blank observations
+
+parr(mfrow = c(2, 2))
+
+# 100 samples of 1
+dis_100 <- NULL
+for (i in 1:100) {
+  x <- sample(data, size = 1, replace = TRUE)
+  dis_100[i] <- mean(x)
+}
+
+# Sampling distributions are reported as frequency histograms
+hist(dis_100, col = "#69b3a2", xlab = "Bill length", main = "n = 1")
+
+
+# 100 samples of 2
+dis_100 <- NULL
+for (i in 1:100) {
+  x <- sample(data, size = 2, replace = TRUE)
+  dis_100[i] <- mean(x)
+}
+
+# Sampling distributions are reported as frequency histograms
+hist(dis_100, col = "#69b3a2", xlab = "Bill length", main = "n = 2")
+
+# 100 samples of 4
+dis_100 <- NULL
+for (i in 1:100) {
+  x <- sample(data, size = 4, replace = TRUE)
+  dis_100[i] <- mean(x)
+}
+
+# Sampling distributions are reported as frequency histograms
+hist(dis_100, col = "#69b3a2", xlab = "Bill length", main = "n = 4")
+
+# 100 samples of 100
+dis_100 <- NULL
+for (i in 1:100) {
+  x <- sample(data, size = 100, replace = TRUE)
+  dis_100[i] <- mean(x)
+}
+
+# Sampling distributions are reported as frequency histograms
+hist(dis_100, col = "#69b3a2", xlab = "Bill length", main = "n = 100")
+```
