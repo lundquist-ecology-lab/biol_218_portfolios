@@ -1,0 +1,433 @@
+---
+title:  Biol/Math 218 lesson
+subtitle: Normal distribution and Z transformation
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input)
+  })
+---
+
+## Part 1: Student's t-distribution
+
+This week we will be discussing how to compare between the means of normally
+distributed populations using population parameters (mu and sigma). We call these
+tests **parametric tests** 
+
+In real-life studies, however, we rarely know the population standard deviation (sigma).
+Therefore, we need to estimate it using the standard error of the mean (SE). This
+then changes our normal sampling distribution to a **t-distribution**.
+
+`t = ybar - mu / SE_{ybar}`
+
+The t distribution incorporates sampling error, and therefore is wider than 
+a standard normal. Because we need to estimate sigma before calculating t, a 
+t-distribution will have a degrees of freedom of `n - 1`.
+
+```{r t_dist_df_5}
+curve(dt(x, df = 5), from = -4, to = 4,
+      ylab = "Probability density",
+      xlab = expression(t[5]))
+```
+
+The critical value of a t-distribution is combined 5% area under the tails of 
+the distribution (2.5% on both sides). Only 2.5% of one tail is considered for A
+one-tailed test.
+
+```{r t_critical_value}
+# Calculating the critical value for the previous example
+t_crit <- qt(0.05 / 2, df = 5)
+print(abs(t_crit))
+```
+
+```{r t_area_under_curve}
+## Two tailed
+x <- curve(dt(x, df = 5), from = -4, to = 4,
+      ylab = "Probability density",
+      xlab = expression(t[5]))
+
+value1 <- 0.5 * t_crit
+value2 <- 0.5 * abs(t_crit)
+
+polygon(c(x$x[x$x <= value1], value1),
+        c(x$y[x$x <= value1], 0),
+        col = "#69b3a2",
+        border = 1)
+text(x = -3, y = 0.1, labels = "2.5%")
+
+polygon(c(x$x[x$x >= value2], value2),
+        c(x$y[x$x >= value2], 0),
+        col = "#69b3a2",
+        border = 1)
+text(x = 3, y = 0.1, labels = "2.5%")
+
+# One tailed
+
+x <- curve(dt(x, df = 5), from = -4, to = 4,
+      ylab = "Probability density",
+      xlab = expression(t[5]))
+
+
+polygon(c(x$x[x$x >= value2], value2),
+        c(x$y[x$x >= value2], 0),
+        col = "#69b3a2",
+        border = 1)
+text(x = 3, y = 0.1, labels = "2.5%")
+```
+
+We can calculate the **95% CI for the mean** using the t critical value
+
+`ybar - t_{0.05(2),df} * SE_{ybar} < mu < ybar + t_{0.05(2),df} * SE_{ybar}`
+
+## Practice problem 1: 95% CI for the mean of *Iris setosa* sepal widths
+
+Let's calculate the 95% CI for the sepal widths of *Iris setosa* from the `iris` 
+data set.
+
+```{r 95_ci_setosa}
+
+```
+
+
+## Part II: T-tests
+
+We can use the t-distribution to perform hypothesis tests related to the means
+of populations.
+
+### One-sample t-test
+
+**One-sample t-test**: compare the mean of a sample `m_{1}` to a proposed population mean
+`m_{0}`
+
+Hypotheses: 
+
+`H_{0}: mu_{1} = mu_{0}`
+
+`H_{A}: mu_{1} != mu_{0}`
+
+One sample t-statistic:
+
+`t = (ybar - mu_{0}) / SE_{ybar}`
+
+We can then use the t-statistic to calculate a P value in R using the t-distribution
+
+**Assumptions:**
+
+- Data is a random sample from the population
+- Y is normally distributed in the population
+
+### Example: Is *Iris veriscolor* petal width equal to the mean petal widths for Iris
+
+**Hypotheses:**
+
+`H_{0}: mu_{1} = mu_{0}`
+
+`H_{A}: mu_{1} != mu_{0}`
+
+```{r one_sample_t}
+sample <- iris$Petal.Width[iris$Species == "versicolor"]
+
+ybar <- mean(sample)
+n <- length(sample)
+mu <- mean(iris$Petal.Width)
+SE_ybar <- sd(sample) / sqrt(n)
+
+t_stat <- (ybar - mu) / SE_ybar
+print(t_stat)
+
+t_crit <- qt(0.05 / 2, df = n - 1)
+print(abs(t_crit))
+
+# Two-tailed P value
+2 * pt(q = t_stat, df = n - 1, lower.tail = FALSE)
+
+# 95% CI
+lower_ci <- ybar - (abs(t_crit) * SE_ybar)
+upper_ci <- ybar + (abs(t_crit) * SE_ybar)
+
+print(paste(round(lower_ci, 3), "< μ <", round(upper_ci, 3)))
+
+# Check work with t.test()
+t.test(sample, mu = mu)
+```
+
+
+### Paired t-test
+
+**Paired t-test**: compare the mean difference `m_{d]` between two samples where samples 
+are paired  with each other (e.g., before and after observations 
+from the each individual in a sample) 
+
+Hypotheses: 
+
+`H_{0}:mu_{d} = 0`
+
+`H_{A}: mu_{d} != 0`
+
+The estimate for `m_{d}` is `dbar`
+
+Paired t-statistic:
+
+`t = (dbar - mu_{d0}) / SE_{dbar}`
+
+**Assumptions:**
+
+- Data is a random sample from the population
+- Paired differences normally distributed in the population
+
+
+### Example: Weight of squirrels
+
+Weight of squirrels before treatment: 450, 400, 440, 390, 400, 432, 415, 401
+Weight of squirrels after treatment: 510, 590, 520, 550, 585, 500, 590, 577
+
+**Hypotheses**
+
+`H_{0}:mu_{d} = 0`
+
+`H_{A}: mu_{d} != 0`
+
+```{r paired_t, warning = FALSE}
+
+before <- c(450, 400, 440, 390, 400, 432, 415, 401)
+after <- c(510, 590, 520, 550, 585, 500, 590, 577)
+
+# Produce a plot of the pairs
+library(ggpubr)
+pairs <- data.frame(before = before, after = after)
+ggpaired(pairs, cond1 = "before", cond2 = "after", ylab = "Weight (g)")
+
+# t-statistic
+d <- pairs$before - pairs$after
+dbar <- mean(d)
+d_sd <- sd(d)
+n <- length(d)
+
+mu <- 0
+SE_dbar <- d_sd / sqrt(n)
+
+t_pairs <- (dbar - mu) / SE_dbar
+print(t_pairs)
+
+t_crit <- qt(0.05 / 2, df = n - 1)
+print(abs(t_crit))
+
+# Two-tailed P value
+2 * pt(q = abs(t_pairs), df = n - 1, lower.tail = FALSE)
+
+# Check work using t.test() function
+t.test(before, after, paired = TRUE)
+```
+
+## Two sample t-test
+
+We can also compare the means of two samples that are not paired, most comparisons
+of means will fall under the two-sample t-test.
+
+Hypotheses: 
+
+`H_{0}:mu_{1} = mu_{2}`
+
+`H_{A}: mu_{1} != mu_{2}`
+
+Two sample t-statistic:
+
+`t = (ybar_{1} = ybar_{2}) / SE_{ybar_{1} - ybar_{2}}`
+
+SE calculated as:
+
+`SE_{ybar_{1} - ybar_{2}} = sqrt(s^2_{p} * (1 / (n_{1}) + (1 / n_{2}))`
+
+Where:
+
+`s^2_{p} = (df_{1} * s_{1}^2 + df_{2} * s_{2}^2) / (df_{1} + df_{2})`
+
+This called the **pooled sample variance**
+
+**Assumptions:**
+
+- Data is a random sample from the population
+- Data is normally distributed in the population
+- Variance between samples in equal
+
+### Example: Penguin bills
+
+Lets test whether there is a difference in bill length between Adelie and Gentoo
+penguins.
+
+Hypotheses: 
+
+`H_{0}:mu_{1} = mu_{2}`
+
+`H_{A}: mu_{1} != mu_{2}`
+
+```{r two_sample_t}
+
+library(palmerpenguins)
+data(penguins)
+
+penguins <- na.omit(penguins)
+
+adelie_bill <- penguins$bill_length_mm[penguins$species == "Adelie"]
+gentoo_bill <- penguins$bill_length_mm[penguins$species == "Gentoo"]
+
+
+# Visualize data (and check normality)
+hist(adelie_bill, xlab = "Bill length",
+      main = substitute(paste(italic('Adalie'),  "penguins")),
+      col = "#69b3a2")
+hist(gentoo_bill, xlab = "Bill length",
+      main = substitute(paste(italic('Gentoo'),  "penguins")),
+      col = "#b37d69")
+
+# Two-sample t-statistic
+ybar_1 <- mean(adelie_bill)
+var_1 <- var(adelie_bill)
+n_1 <- length(adelie_bill)
+df_1 <- n_1 - 1
+
+ybar_2 <- mean(gentoo_bill)
+var_2 <- var(gentoo_bill)
+n_2 <- length(gentoo_bill)
+df_2 <- n_2 - 1
+
+pooled_var <- ((df_1 * var_1) + (df_2 * var_2)) / (df_1 + df_2)
+
+SE_diff <- sqrt(pooled_var * ((1 / n_1) + (1 / n_2)))
+
+t_diff <- (ybar_1 - ybar_2) / SE_diff
+print(t_diff)
+
+t_crit <- qt(0.05 / 2, df = n_1 + n_2 - 2)
+print(abs(t_crit))
+
+# Two-tailed P value
+2 * pt(q = abs(t_diff), df = n_1 + n_2 - 2, lower.tail = FALSE)
+
+# Check work using t.test() function
+t.test(adelie_bill, gentoo_bill, var.equal = TRUE)
+
+# If variances are not equal,
+# we can use Welch's t-test (which is the default in R)
+t.test(adelie_bill, gentoo_bill)
+```
+
+## Part III: Checking Assumptions
+
+### Checking normality
+
+Checking normality is relatively straight forward. We can use `hist()` to produce
+a histogram of our observations and use the **eyeball test**. If it looks normal
+(i.e., like a bell curve), then we can assume our data is normal.
+
+```{r eyeball_test}
+library(palmerpenguins)
+data(penguins)
+
+penguins <- na.omit(penguins)
+adelie_bill <- penguins$bill_length_mm[penguins$species == "Adelie"]
+
+# Visualize data (and check normality)
+hist(adelie_bill, xlab = "Bill length",
+      main = substitute(paste(italic('Adalie'),  "penguins")),
+      col = "#69b3a2")
+```
+
+There is also a hypothesis test called the **Shapiro-Wilk test**, which is a 
+goodness-of-fit test for the normal distribution. A P-value > 0.05 indicates
+that the data is likely to be from a population that is normally distributed.
+
+Hypotheses:
+
+`H_{0} = Data are sampled from a normal distribution`
+
+`H_{A} = Data are not sampled from a normal distribution`
+
+```{r shapiro_test}
+library(palmerpenguins)
+data(penguins)
+
+penguins <- na.omit(penguins)
+adelie_bill <- penguins$bill_length_mm[penguins$species == "Adelie"]
+
+shapiro.test(adelie_bill)
+```
+
+### Checking homogeneity of variances
+
+Notice above with the two-sample t-test that we set `var.equal = TRUE`. 
+While we can use the "eyeball test" to 
+determine if our data is from a normal distribution. We can't eyeball equal
+variances. Instead, we can use a hypothesis tests. One way is the **F-test**,
+the other is **Levene's test**.
+
+## F-test
+
+Hypotheses:
+
+`H_{0}: var_{1} = var{2}`
+
+`H_{A}: var_{1} != var{2}`
+
+Equation: 
+
+`F = s^2_{1} / s^2_{2}`
+
+Note: Make sure the numerator is the highest of the two variances
+
+```{r f_test}
+library(palmerpenguins)
+data(penguins)
+
+penguins <- na.omit(penguins)
+
+adelie_bill <- penguins$bill_length_mm[penguins$species == "Adelie"]
+gentoo_bill <- penguins$bill_length_mm[penguins$species == "Gentoo"]
+
+var_1 <- var(adelie_bill)
+n_1 <- length(adelie_bill)
+df_1 <- n_1 - 1
+
+var_2 <- var(gentoo_bill)
+n_2 <- length(gentoo_bill)
+df_2 <- n_2 - 1
+
+f_stat <- var_1 / var_2
+print(f_stat)
+
+# Check work using var.test()
+var.test(adelie_bill, gentoo_bill)
+```
+
+
+## Levene's Test
+
+This one is a bit more complicated and allows us to compare between more than two
+levels of a group. Here we can check homogeneity of variances between all 
+three species of penguins.
+
+Hypotheses:
+
+`H_{0}: var_{1} = var{2}`
+
+`H_{A}: var_{1} != var{2}`
+
+```{r levenes_test}
+library(car)
+library(palmerpenguins)
+data(penguins)
+
+penguins <- na.omit(penguins)
+
+leveneTest(bill_length_mm ~ species, penguins)
+```
+
