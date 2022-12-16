@@ -234,13 +234,13 @@ anova(penguin_model)
 summary(aov(penguin_model))
 ```
 
-### Step 06: Post-hoc tests
+### Step 06: Post hoc tests
 
 Our P-value is well under our \alpha of 0.05. Therefore, we 
 reject the null and can state that there is evidence that at least one of the 
 bill lengths is different between species. But which one? 
 
-We can do a post-hoc test to make individual comparisons between species. The one
+We can do a post hoc test to make individual comparisons between species. The one
 we are going to use is called the **Tukey-Kramer** test.
 
 ```{r 06_Tukey_test}
