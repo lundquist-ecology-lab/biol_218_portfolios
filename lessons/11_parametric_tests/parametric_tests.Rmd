@@ -40,7 +40,7 @@ curve(dt(x, df = 5), from = -4, to = 4,
 ```
 
 The critical value of a t-distribution is combined 5% area under the tails of 
-the distribution (2.5% on both sides). Only 2.5% of one tail is considered for A
+the distribution (2.5% on both sides). Only 2.5% of one tail is considered for a
 one-tailed test.
 
 ```{r t_critical_value}
@@ -173,7 +173,7 @@ Hypotheses:
 
 `H_{A}: mu_{d} != 0`
 
-The estimate for `m_{d}` is `dbar`
+The estimate for `mu_{d}` is `dbar`
 
 Paired t-statistic:
 
@@ -231,7 +231,7 @@ t.test(before, after, paired = TRUE)
 ## Two sample t-test
 
 We can also compare the means of two samples that are not paired, most comparisons
-of means will fall under the two-sample t-test.
+of means will fall under the **two-sample t-test**.
 
 Hypotheses: 
 
@@ -338,7 +338,7 @@ adelie_bill <- penguins$bill_length_mm[penguins$species == "Adelie"]
 
 # Visualize data (and check normality)
 hist(adelie_bill, xlab = "Bill length",
-      main = substitute(paste(italic('Adalie'),  "penguins")),
+      main = substitute(paste(italic('Adelie'),  "penguins")),
       col = "#69b3a2")
 ```
 
