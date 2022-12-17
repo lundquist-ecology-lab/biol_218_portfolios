@@ -119,7 +119,6 @@ data <- data.frame(weight = c(before, after),
 data %>% sign_test(weight ~ timing)
 ```
 
-
 ### Mann-Whitney U-test or Wilcoxon rank sum test
 
 This replaces the two-sample t-test. This test uses the **ranks** (smallest to
@@ -162,4 +161,3 @@ penguins <- na.omit(penguins)
 # Kruskal-Wallis test
 kruskal.test(bill_length_mm ~ species, data = penguins)
 ```
-
