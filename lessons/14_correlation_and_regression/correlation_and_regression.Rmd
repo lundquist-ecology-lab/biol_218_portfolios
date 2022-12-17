@@ -57,9 +57,9 @@ abline(lm(y2 ~ x2), col = "#b37d69", lwd = 3)
 Assumptions:
 
 - Random sample
-- x is normal with equal vars for all values of Y
-- y is normal with equal vars for all values of X
-- Relationship between X and Y is monotonoic (i.e. rise or fall together)
+- x is normal with equal vars for all values of y
+- y is normal with equal vars for all values of x
+- Relationship between x and y is monotonoic (i.e. rise or fall together)
 
 A correlation is performed by measuring covariance. **Covariance** is how two 
 observations measured from the same subject deviate together from 
@@ -94,7 +94,7 @@ A regression is how the expectation of y changes with a change in x. The paramet
 is `beta` and the estimate is `b`. You may have heard of regression as the 
 "line of best fit". Regression is a line  such that:
 
-`Y_{i} <- a + (bX_{i})`
+`Y = a + bX`
 
 a = intercept (prediction y for x = 0)
 b = slope (unit increase y for increase y)
@@ -103,14 +103,14 @@ The goal of a regression is to predict y from x
 
 Hypotheses:
 
-`H_{0}: beta = 0`
-`H_{A}: beta != 0`
+`H_{0}: \beta = 0`
+`H_{A}: \beta != 0`
 
 Assumptions:
 
-- Random sample
+- Samples are random
 - y is normally distributed with variance independent of x
-- Linear regression assumes that the relationship between x and y can be described as a line
+- The relationship between x and y can be described as a line
 
 **Note**: X does not have to be normally distributed
 
