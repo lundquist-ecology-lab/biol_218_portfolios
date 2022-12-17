@@ -1,0 +1,160 @@
+---
+title:  Biol/Math 218 lesson
+subtitle: Correlation and regression
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input)
+  })
+---
+
+Before this point, we have been using statistics to compare groups of observations
+and determining the probability that the differences we see between groups
+is no due to random chance. However, the real strength of statistics is the ability
+to use probability and current observations to **predict future observations** and 
+trends. The basic way we can do this is through **correlation** and **regression** 
+of  **two continuous variables**.
+
+## Part 01: Correlation
+
+A correlation is a determination about how well we can predict `y` (dependent variable)
+from `x` (independent variable). The parameter for a correlation is `rho` and the
+estimate is `r`.
+
+```{r correlation_plots}
+par(mfrow = c(1, 2))
+
+x1 <- seq(from = -3, to = 3, by = 0.5)
+y1 <- seq(from = 13, to = 19, by = 0.5)
+
+plot(x1, y1, xlim = c(-4, 4), ylim = c(0, 30), pch = 16,
+      main = "r is large", col = "#69b3a2")
+abline(lm(y1 ~ x1), col = "#b37d69", lwd = 3)
+
+x2 <- seq(from = -3, to = 3, by = 0.5)
+y2 <- c(14.0, 14.5, 17.0, 13.0, 16.0, 18.0, 18.5, 15.5, 16.5, 13.5, 19.0, 17.5, 15.0)
+
+plot(x2, y2, xlim = c(-4,4), ylim = c(0, 30), pch = 16,
+      main = "r is small", col = "#69b3a2")
+abline(lm(y2 ~ x2), col = "#b37d69", lwd = 3)
+```
+
+## Hypotheses: 
+
+`H_{0}: r = 0`
+
+`H_{A}: r != 0`
+
+Assumptions:
+
+- Random sample
+- x is normal with equal vars for all values of Y
+- y is normal with equal vars for all values of X
+- Relationship between X and Y is monotonoic (i.e. rise or fall together)
+
+A correlation is performed by measuring covariance. **Covariance** is how two 
+observations measured from the same subject deviate together from 
+their means.
+
+**r** describes how reliably x and y change together. We call r the **correlation coefficient**
+
+**R^2** describes the amount of variation in one variable that can be predicted from the other
+
+We can use use the correlation functions in R and interpreting the results.
+
+### Spearman rank correlation
+```{r correlation_example}
+library(palmerpenguins)
+data(penguins)
+
+penguins <- na.omit(penguins)
+
+x <- penguins$bill_length_mm[penguins$species == "Chinstrap"]
+y <- penguins$bill_depth_mm[penguins$species == "Chinstrap"]
+
+# Spearman rank correlation
+cor.test(x, y, method = "spearman")
+```
+
+**Important**: a significant correlation does not equal causation. It is up to the statistician
+to think critically about the relationships between the two sets of data.
+
+## Part 02: Regression
+
+A regression is how the expectation of y changes with a change in x. The parameter
+is `beta` and the estimate is `b`. You may have heard of regression as the 
+"line of best fit". Regression is a line  such that:
+
+`Y_{i} <- a + (bX_{i})`
+
+a = intercept (prediction y for x = 0)
+b = slope (unit increase y for increase y)
+
+The goal of a regression is to predict y from x
+
+Hypotheses:
+
+`H_{0}: beta = 0`
+`H_{A}: beta != 0`
+
+Assumptions:
+
+- Random sample
+- y is normally distributed with variance independent of x
+- Linear regression assumes that the relationship between x and y can be described as a line
+
+**Note**: X does not have to be normally distributed
+
+```{r regression_example}
+library(palmerpenguins)
+data(penguins)
+
+penguins <- na.omit(penguins)
+
+x <- penguins$bill_length_mm[penguins$species == "Chinstrap"]
+y <- penguins$bill_depth_mm[penguins$species == "Chinstrap"]
+
+# Linear model for regression
+chinstrap_model <- lm(y ~ x)
+
+# Check the estimates of the parameters using summary()
+chinstrap_reg <- summary(chinstrap_model)
+print(chinstrap_reg)
+
+# Extract the slope (estimate of x)
+b <- chinstrap_reg$coefficients[[2]]
+print(b)
+
+# Extract the intercept (estimate of intercept)
+a <- chinstrap_reg$coefficients[[1]]
+print(a)
+
+# Full equation
+# y_i <- a + (b * x_i)
+
+# t-statistic
+t_stat <- chinstrap_reg$coefficients[[6]]
+print(t_stat)
+
+# p-value
+p_value <- chinstrap_reg$coefficients[[8]]
+print(p_value)
+
+# R-squared
+R2 <- chinstrap_reg$r.squared
+print(R2)
+
+# Plotting using abline()
+
+plot(x, y, pch = 16, ylab = "Bill depth (mm)", xlab = "Bill length (mm)", col = "#69b3a2")
+abline(chinstrap_model, col = "#b37d69", lwd = 3)
+```
