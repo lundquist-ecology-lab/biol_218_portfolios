@@ -23,7 +23,7 @@ will be met in all cases. If we find that the assumptions have been violated, we
 have a few options:
 
 ## Option 1: Ignore the violations
-Ignore the violations: This usually only works when we are comparing means and 
+This usually only works when we are comparing means and 
 the normality assumption is violated. If our *n* is high, we can 
 ignore slight non-normality. We can't really do this for differences in variance,
 especially if our samples are small or our uneven.

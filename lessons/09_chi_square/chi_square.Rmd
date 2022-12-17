@@ -1,6 +1,6 @@
 ---
 title:  Biol/Math 218 lesson
-subtitle: Chi-squared test
+subtitle: Chi-square test
 author: Your Name Here
 output:
   rmdformats::downcute:
@@ -17,11 +17,11 @@ knit: (function(input, ...) {
   })
 ---
 
-This week, we are going to utilize **chi-squared goodness of fit test**
+This week, we are going to utilize **chi-square goodness of fit test**
 to decide if a set of observations fit a particular, expected distribution and
 how well our observations fit to that expected distribution.
 
-`chi_squared = sum((observed - expected)^2 / expected`
+`chi_square = sum((observed - expected)^2 / expected`
 
 `H_0: The data fits an expected distribution`
 
@@ -47,7 +47,7 @@ of possible offspring.
 
 However, we now know that sometimes certain alleles are associated with each 
 other, or in other words are not independent. We can test to see if alleles 
-are linked using the `chi-squared goodness of fit` test. 
+are linked using the `chi-square goodness of fit` test. 
 
 Let's say we take flies that are heterozygous for both the B and E genes. 
 We perform `100` dihybrid crosses and  get the following offspring phenotypes:
@@ -61,7 +61,7 @@ We perform `100` dihybrid crosses and  get the following offspring phenotypes:
 |                     |     Total = 100      |
 
 
-We can use the chi-squared test to see if these genes independently assort. 
+We can use the chi-square test to see if these genes independently assort. 
 If we expect a 9:3:3:1 ratio, we can calculate the expected phenotypes 
 of the offspring:
 
@@ -77,16 +77,16 @@ We can then calculate the chi-square statistic
 using the equation
 
 
-```{r chi_squared}
+```{r chi_square}
 
-chi_squared <- ((50 - 56.25)^2 / 56.25) +
+chi_square <- ((50 - 56.25)^2 / 56.25) +
                ((20 - 18.75)^2 / 18.75) +
                ((20 - 18.75)^2 / 18.75) +
                ((10 - 6.25)^2 / 6.25)
 
-print(chi_squared)
+print(chi_square)
 
-## Chi-squared distribution
+## Chi-square distribution
 pchisq(3.11, df = 3, lower.tail = FALSE)
 
 ## Check to our results
@@ -96,11 +96,11 @@ expect_prob <- c(9 / 16, 3 / 16, 3 / 16, 1 / 16)
 chisq.test(obs, p = expect_prob)
 ```
 
-Note: Chi-squared tests are always `one-tail` tests
+Note: Chi-square tests are always `one-tail` tests
 
 ## Practice Problem: Fitting a binomial distribution
 
-We can also use the chi-squared test to determine if a set of observations fits
+We can also use the chi-square test to determine if a set of observations fits
 a particular sampling distribution, like the binomial distribution. 
 
 Let's suppose that in aardvarks, front foot hair length is controlled by 
@@ -118,9 +118,9 @@ If having the short hair allele does not impact fitness (survival and reproducti
 then individuals  with 0, 1, or 2 copies of the "b" allele should follow a 
 binomial distribution.
 
-Test this using the chi-squared goodness of fit test.
+Test this using the chi-square goodness of fit test.
 
 `Hypotheses`
 
-```{r chi_squared_aardvarks}
+```{r chi_square_aardvarks}
 ```
