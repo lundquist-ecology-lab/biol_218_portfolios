@@ -1,0 +1,165 @@
+---
+title:  Biol/Math 218 lesson
+subtitle: Non-parametric tests
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input)
+  })
+---
+
+Up to this point, we have been testing whether the assumptions of our particular
+test has been met by our data. However, it is not guaranteed that our assumptions
+will be met in all cases. If we find that the assumptions have been violated, we
+have a few options:
+
+## Option 1: Ignore the violations
+Ignore the violations: This usually only works when we are comparing means and 
+the normality assumption is violated. If our *n* is high, we can 
+ignore slight non-normality. We can't really do this for differences in variance,
+especially if our samples are small or our uneven.
+
+## Option 2: Transform the data
+We can use different transformations on the data and then retest the assumptions.
+There are a wide variety of transformations we can do.
+
+Here are some examples:
+
+```{r data_transformations}
+# Raw data
+data <- iris$Sepal.Width
+hist(data)
+
+# Natural log transformation
+log_transform <- log(data + 1)
+hist(log_transform)
+
+# Log_10 transformation
+log10_transform <- log10(data + 1)
+hist(log10_transform)
+
+# Square-root transformation
+sqrt_transform <- sqrt(data + 0.5)
+hist(sqrt_transform)
+```
+
+Important notes on transformations:
+
+1. While analyses should be done using **transformed** data, data should be presented and reported **untransformed**
+2. All data used in a particular study needs to be transformed using the same technique.
+
+## Option 3: Use nonparametric tests
+
+If transformation does not work, **nonparametric tests**, which do not rely on
+population parameters, can be used instead. There are a number of analogous 
+nonparametric tests we can use in place of parametric tests.
+
+### Sign test
+
+Replaces one-sample t-test or paired t-test. Basically, results above the 
+median are assigned a "+" and those below are assigned a "-". It is very similar
+to a binomial test. Because a lot of information from the data is not used, it 
+has a lower power than those parametric tests.
+
+Assumptions:
+
+- All samples are random samples
+
+```{r sign_test}
+# One sample
+data(iris)
+sample <- iris$Petal.Width[iris$Species == "versicolor"]
+
+# Hypothetical median (median of all Iris species' petal widths)
+med <- median(iris$Petal.Width)
+
+signs <- NULL
+for (i in 1:length(sample)) {
+  if (sample[i] > med) {
+    signs[i] <- paste("+")
+  } else {
+    signs[i] <- paste("-")
+  }
+}
+print(signs)
+
+trials <- length(sample)
+print(trials)
+
+successes <- length(signs[signs == "+"])
+print(successes)
+
+# Sign test
+binom.test(successes, trials)
+
+# OR
+
+library(rstatix)
+sample <- data.frame(sample)
+sample %>% sign_test(sample ~ 1, mu = med)
+
+# Paired data
+
+before <- c(450, 400, 440, 390, 400, 432, 415, 401)
+after <- c(510, 590, 520, 550, 585, 500, 590, 577)
+
+data <- data.frame(weight = c(before, after),
+                  timing = c(rep("before", 8), rep("after", 8)))
+
+# Sign test
+data %>% sign_test(weight ~ timing)
+```
+
+
+### Mann-Whitney U-test or Wilcoxon rank sum test
+
+This replaces the two-sample t-test. This test uses the **ranks** (smallest to
+largest) of the data instead of the absolute values.
+
+Assumptions:
+
+- All samples are random samples
+- The shape of the distribution of the measurement have the same shape
+
+```{r mann_whitney_test}
+library(palmerpenguins)
+data(penguins)
+
+penguins <- na.omit(penguins)
+
+adelie_bill <- penguins$bill_length_mm[penguins$species == "Adelie"]
+gentoo_bill <- penguins$bill_length_mm[penguins$species == "Gentoo"]
+
+# Mann-Whitney U-test/Wilcoxon rank sum
+wilcox.test(adelie_bill, gentoo_bill)
+```
+
+### Kruskal-Wallis test
+
+This test replaces the ANOVA. This test is based on ranks, similarly to the 
+Wicoxon rank sum test and Mann-Whitney U-test
+
+Assumptions:
+
+- All samples are random samples
+- The shape of the distribution of the measurement must be the same for all populations
+
+```{r kruskal_wallis_test}
+library(palmerpenguins)
+data(penguins)
+
+penguins <- na.omit(penguins)
+
+# Kruskal-Wallis test
+kruskal.test(bill_length_mm ~ species, data = penguins)
+```
+

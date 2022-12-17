@@ -218,8 +218,8 @@ in a couple weeks.
 
 ```{r 05_anova_function}
 
-# We build a linear model stating our y (bill_length_mm) and 
-# our group (species). The tilde "~" should be read as given, 
+# We build a linear model stating our y (bill_length_mm) and
+# our group (species). The tilde "~" should be read as given,
 # so bill length given species is our model
 penguin_model <- lm(bill_length_mm ~ species, data = penguins)
 
