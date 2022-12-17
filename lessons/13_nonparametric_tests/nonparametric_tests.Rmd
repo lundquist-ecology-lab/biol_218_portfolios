@@ -1,6 +1,6 @@
 ---
 title:  Biol/Math 218 lesson
-subtitle: Non-parametric tests
+subtitle: Nonparametric tests
 author: Your Name Here
 output:
   rmdformats::downcute:
