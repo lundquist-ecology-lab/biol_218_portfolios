@@ -21,6 +21,6 @@ passwd NEW_USER
 
 ```bash
 mkdir /home/NEW_USER
-chown /home/NEW_USER
+chown NEW_USER /home/NEW_USER
 ```
 These changes should be instantaneous and the new user can log in immediately. 
