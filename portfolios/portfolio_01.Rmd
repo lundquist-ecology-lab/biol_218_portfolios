@@ -34,7 +34,7 @@ non-code commented out with `#`.
 An Environmental Studies student was interested in the attitudes of students at her college about 
 new sustainability practices at the school. She developed a questionnaire and acquired the 
 list of emails for all enrolled students. She randomly selected 500 students 
-from those email lists to send her questionnaire.
+from those email lists to send her questionnaire. 
 
 A total of 150 of the 500 questionnaires were filled out and returned to her.
 
@@ -57,7 +57,7 @@ as a random sample of all students? Why or why not?
 
 ## Part 02: Data types
 
-Here are some vectors of data
+Here are some vectors (or arrays) of data
 ```{r, example_data}
 y1 <- iris$Sepal.Length
 y2 <- Orange$age
@@ -72,7 +72,7 @@ y5 <- ChickWeight$ Weight
 ### Exercise 01
 Reproduce the code `example_data` chunk below and mark each vector as 
 either **continuous** or **discrete** using comments, "#". Make sure to give your new
-chunk a unique title (I suggest something like `exercise_01`).
+chunk a unique title (I suggest something like `exercise_01`). 💻
 
 ## Part 03: Parameters *vs* estimates
 
