@@ -38,20 +38,20 @@ from those email lists to send her questionnaire.
 
 A total of 150 of the 500 questionnaires were filled out and returned to her.
 
-**Question 01**: Define and contrast samples and populations, and parameters and estimates
+❔**Question 01**: Define and contrast samples and populations, and parameters and estimates
 
 `Q01 Answer:`
 
-**Question 02**: Can the 150 students that returned questionnaires be considered 
+❔**Question 02**: Can the 150 students that returned questionnaires be considered 
 as a random sample of all students? Why or why not?
 
 `Q02 Answer:`
 
-**Question 03**: Explain what type of bias might be at play here.
+❔**Question 03**: Explain what type of bias might be at play here.
 
 `Q03 Answer:`
 
-**Question 04**: What is sampling error and how can researchers can minimize it?
+❔**Question 04**: What is sampling error and how can researchers can minimize it?
 
 `Q04 Answer:`
 
@@ -85,17 +85,17 @@ pollinators were pinned and identified in the lab. At the end of the study,
 the total number of pollinator species (richness) in New York City parks were estimated by
 the total number of pollinators collected during the study. 
 
-**Question 05**: What parameter is being estimated in this pollinator study?
+❔**Question 05**: What parameter is being estimated in this pollinator study?
 
 `Q05 Answer:`
 
-**Question 06**: Is the sample of individuals captured in red cup traps 
+❔**Question 06**: Is the sample of individuals captured in red cup traps 
 likely to be a random sample? Why or why not? Include the two criteria 
 that define a sample as random in your answer.
 
 `Q06 Answer:`
 
-**Question 07**: Is the number of species in the sample likely to be an 
+❔**Question 07**: Is the number of species in the sample likely to be an 
 unbiased estimate? Why or why not?
 
 `Q07 Answer:`
@@ -108,15 +108,15 @@ male fruit flies to the pesticide Paraquat, which can inhibit neurological
 function, as well as kept thirty males unexposed. She studied whether 
 mating success was different between the two groups.
 
-**Question 08**: Which is the explanatory and which is the response variable?
+❔**Question 08**: Which is the explanatory and which is the response variable?
 
 `Q08 Answer:`
 
-**Question 09**: For each variable, state whether they are categorical or numeric?
+❔**Question 09**: For each variable, state whether they are categorical or numeric?
 
 `Q09 Answer:`
 
-**Question 10**: Is this study observational or experimental?
+❔**Question 10**: Is this study observational or experimental?
 
 `Q10 Answer:`
 
@@ -125,35 +125,14 @@ rural streams in upstate New York. The collected individuals of
 the hellgrammite *Nigronia serricornus* in both an urban and
 rural stream sites and weighed them in the lab.
 
-**Question 11**: Which is the explanatory and which is the response variable?
+❔**Question 11**: Which is the explanatory and which is the response variable?
 
 `Q11 Answer:`
 
-**Question 12**: Which variables are categorical and which are numeric?
+❔**Question 12**: Which variables are categorical and which are numeric?
 
 `Q12 Answer:`
 
-**Question 13**: Is this study observational or experimental?
+❔**Question 13**: Is this study observational or experimental?
 
 `Q13 Answer:`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
