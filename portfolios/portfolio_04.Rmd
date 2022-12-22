@@ -83,9 +83,7 @@ histogram of sample size 50? Explain why. Hint: Look at the x axis.
 
 `Q04 Answer:`
 
-
 ## Part 03: Standard error and 95% CI of the mean
-
 
 ### Exercise 03-01
 Here is some data on systolic blood pressure:
@@ -96,17 +94,11 @@ In a code chunk, find the sample size, sample mean, variance, and standard devia
 ### Exercise 03-02
 In a code chunk, calculate the standard error of the mean
 
-
 ### Exercise 03-03
 Using the 2SE convention, calculate an approximate 95% CI for the mean and 
 provide the upper and lower limits.
-
 
 ### Exercise 04
 
 Now, in a code chunk, calculate all the same above again (Exercise 03-01 through -03), but 
 instead use sepal widths of *Iris virginica*.
-
-
-
-

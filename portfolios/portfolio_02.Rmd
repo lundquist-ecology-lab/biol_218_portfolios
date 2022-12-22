@@ -51,7 +51,7 @@ In the space below, write a `r{}` code chunk to:
 
 ## Part 02: Basic plotting
 
-**Question 01**: What are the four rules for drawing a good graph?
+❔**Question 01**: What are the four rules for drawing a good graph?
 
 `Q01 Answer:`
 
@@ -73,11 +73,11 @@ barplot(max_temp,
 
 ```
 
-**Question 02**: For what sort of data are bar graphs used?
+❔**Question 02**: For what sort of data are bar graphs used?
 
 `Q02 Answer:`
 
-**Question 03**: Which day had the highest maximum temperature during that week?
+❔**Question 03**: Which day had the highest maximum temperature during that week?
 
 `Q03 Answer:`
 
@@ -99,7 +99,7 @@ plot(iris$Petal.Length, iris$Petal.Width, pch = 16, col = "black",
      xlim = c(4, 7), ylim = c(0, 3))
 ```
 
-**Question 04**: What is the relationship between petal length and petal width?
+❔**Question 04**: What is the relationship between petal length and petal width?
 
 `Q04 Answer:`
 
@@ -112,8 +112,8 @@ on in the semester.
 ```{r, iris_bestfit}
 data(iris)
 
-plot(iris$Petal.Length, iris$Petal.Width, pch = 16, col = "black", 
-     main = "Relationship of flower part dimensions", xlab = "Petal length", 
+plot(iris$Petal.Length, iris$Petal.Width, pch = 16, col = "black",
+     main = "Relationship of flower part dimensions", xlab = "Petal length",
      ylab = "Petal width",
      xlim = c(4, 7), ylim = c(0, 3))
 
@@ -137,7 +137,7 @@ boxplot(iris$Sepal.Length ~ iris$Species,
       xlab = "Species")
 ```
 
-**Question 05**: What do the thick lines in the boxes represent? What do the whiskers represent?
+❔**Question 05**: What do the thick lines in the boxes represent? What do the whiskers represent?
 
 ### Exercise 06
 Run this violin plot and answer the question.
@@ -152,9 +152,9 @@ ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
   geom_violin()
 ```
 
-**Question 06**: Why is this called a violin plot? What do they represent?
+❔**Question 06**: Why is this called a violin plot? What do they represent?
 
-## Part 3: Advanced plots
+## Part 03: Advanced plots
 
 ### Exercise 07
 Go to https://r-graph-gallery.com/ and:

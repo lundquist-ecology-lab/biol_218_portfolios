@@ -17,8 +17,7 @@ knit: (function(input, ...) {
   })
 ---
 
-
-Today we will go over the syllabus and learn how to download and use code
+This week we will go over the syllabus and learn how to download and use code
 off of the [GitHub repository](https://github.com/lundquist-ecology-lab/biostatistics)
 and how to use RMarkdown to write R notebooks and produce and submit 
 portfolio assignments.
@@ -29,15 +28,133 @@ If you are reading this in RStudio on your
 [personal RStudio instance](https://www.lundquistecology.com/courses/biostatistics/biostats-intro/rstudio-server-tutorial), 
 you are read to go on to **Part 2**.
 
-## Part 2: Using Rmarkdown in RStudio
+## Part 2: Using R Markdown in RStudio
 
-RMarkdown files (`.Rmd`) are a combination of `R` (or `Python`) code blocks and
+R Markdown files (`.Rmd`) are a combination of `R` (or `Python`) code blocks and
 the writeup language called `Markdown`, which is itself based on `HTML` which is
-the basic language of webpages. Using RMarkdown allows us to write in regular prose
+the basic language of webpages. Using R Markdown allows us to write in regular prose
 as well as write executable code in code blocks. It also allows us to export 
 that prose and code as a familiar format like `.docx` (Microsoft Word), `.pdf` (Adobe), 
 and `.html` (website). In our case, you will be exporting your portfolios as 
 quite stylish `.html`.
 
-Check out this [page]() for a run down of anatomy of a RMarkdown document as well
+Check out this [page](https://rmarkdown.rstudio.com/articles_intro.html) for a 
+run down of anatomy of a R Markdown document as well
 as a step by step guide to export (or **knit**) a `.Rmd` file to `.html`.
+
+## Part 3: Dealing with data
+
+Data is made up of **variables** can classify data into two basic:
+
+- **Numeric**: numbers, either whole or fractions
+    - Discrete: Only certain values possible within a given range (e.g. counts)
+    - Continuous: Any value is possible within a given range (e.g. measurements)
+
+- **Categorical** (factors): identifies a grouping of data
+
+Both numeric is collected through **experimental** and **observational** studies
+and most data is recorded electronically as either Excel spreadsheets (`.xlsx`) 
+or as comma separated value sheets (`.csv`) where all values of are separated 
+from each other with a `,`. 
+
+Example csv format:
+
+```{r csv)example}
+variable_1, variable_2, group
+10, 15, 1
+11, 13, 1
+12, 11, 1
+14, 11, 1
+12, 11, 2
+11, 11, 2
+15, 13, 2
+16, 12, 2
+```
+Notice the first row contains a variable name for each colum and then each other row
+is a set of measurements (numeric) or identifiers (factors). 
+
+- Each row represents a single observation of a particular set of variables. 
+- Each column represents all observations of a particular variable.
+
+## Important concepts
+- The entire table together is a `data frame`
+- Each column represents a single `vector` or `array` of data
+- Data in columns can represent `numerical` data or made up of `factors`, even if the arrays are made up of numbers
+- We need to explicitly indicate which variables are `factors` in our code
+
+### Exercise: Importing data
+
+Built-in data:
+```{r built_in_data}
+
+# Importing built in data
+
+data(iris) # This imports the built-in Iris dataset
+
+print(iris$Species) # Example code, printing the species of Iris in the dataset
+
+# List all built-in datasets
+
+data()
+```
+
+.csv files (from the internet)
+
+```{r csv_internet}
+tmp <- tempfile(fileext = ".csv")
+download.file(url = "https://data.cdc.gov/resource/9bhg-hcku.csv",
+            destfile = tmp)
+covid_data <- read.csv(tmp, header = TRUE, stringsAsFactors = TRUE)
+head(covid_data) # Gives us the first few rows of the data
+```
+
+
+.xlsx files (from the internet)
+
+```{r xlxs_internet}
+library("readxl")
+tmp <- tempfile(fileext = ".xlsx")
+download.file(url = "https://dryad.org/stash/downloads/file-stream/1936219",
+            destfile = tmp)
+brassica_data <- read_excel(tmp)
+head(brassica_data)
+```
+
+If the files are on local storage
+
+```{r local_files}
+
+# If the data is in .csv format
+DATA_FILE_CSV <- read.csv("/path/to/DATA_FILE.csv", header = TRUE, stringsAsFactors = TRUE)
+
+# If the data is in .xlxs format
+library("readxl")
+DATA_FILE_XLXS <- read_excel("/path/to/DATA_FILE_XLXS")
+```
+
+There may be other data file formats out there (e.g. .txt), and you can search
+on Google how to import those.
+
+## Exercise exploring data
+
+We can explore the data using functions in R
+
+```{r explore_data}
+# Explore built-in data
+data()
+
+# Download data from an R library()
+library(palmerpenguins) # Data is in a library called "palmerpenguins"
+palmerpenguin <- data(penguins)
+
+# Some diagnostic functions
+
+# First few rows
+head(penguins)
+# Last few rows
+tail(penguins)
+
+# Determine if particular variable is a factor or numeric
+class(penguins$species)
+class(penguins$bill_length_mm)
+```

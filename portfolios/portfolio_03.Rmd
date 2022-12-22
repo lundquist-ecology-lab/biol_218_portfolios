@@ -126,7 +126,6 @@ hist(rbeta(10000, 1, 1), main = "", xlab = "", col = "darkred")
 ```
 `Q04_1 Answer:`
 
-
 Fun code: Run this chunk to see the built-in colors in R
 ```{r, color_grid}
 showCols <- function(cl = colors(), bg = "grey",

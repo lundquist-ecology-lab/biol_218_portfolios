@@ -100,7 +100,7 @@ unbiased estimate? Why or why not?
 
 `Q07 Answer:`
 
-## Part 4: Explanatory *vs* response variables
+## Part 04: Explanatory *vs* response variables
 
 The courtship of male and female fruit flies is complex and can be
 impacted by changes in their environment. A scientist exposed thirty
