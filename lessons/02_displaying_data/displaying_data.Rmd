@@ -22,7 +22,7 @@ knit: (function(input, ...) {
 Today we will be looking at the basics of displaying data using plots and 
 tables using R. 
 
-The lesson can be found here: [Presenting Data](https://www.lundquistecology.com/coures/biostatistics/presenting-data)
+The lesson can be found here: [Presenting Data](https://lundquistecology.com/choosing-right-figure-for-the-job/)
 
 First we will look at some basic plots. The code for the plots
 are located in the [/basic_plotting](/basic_plotting) folder.

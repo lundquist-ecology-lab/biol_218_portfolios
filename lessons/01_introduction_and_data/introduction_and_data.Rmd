@@ -25,7 +25,7 @@ portfolio assignments.
 ## Part 1: Using GitHub
 
 If you are reading this in RStudio on your 
-[personal RStudio instance](https://www.lundquistecology.com/courses/biostatistics/biostats-intro/rstudio-server-tutorial), 
+[personal RStudio instance](https://lundquistecology.com/getting-to-know-your-rstudio-server-instance/), 
 you are read to go on to **Part 2**.
 
 ## Part 2: Using R Markdown in RStudio
@@ -59,7 +59,7 @@ from each other with a `,`.
 
 Example csv format:
 
-```{r csv)example}
+```{r csv_example, eval = FALSE}
 variable_1, variable_2, group
 10, 15, 1
 11, 13, 1
@@ -107,7 +107,6 @@ download.file(url = "https://data.cdc.gov/resource/9bhg-hcku.csv",
 covid_data <- read.csv(tmp, header = TRUE, stringsAsFactors = TRUE)
 head(covid_data) # Gives us the first few rows of the data
 ```
-
 
 .xlsx files (from the internet)
 
