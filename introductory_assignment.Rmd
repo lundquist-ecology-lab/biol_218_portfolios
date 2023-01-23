@@ -1,0 +1,78 @@
+---
+title:  Biol/Math 218
+subtitle: Introductory assignment
+author: Your Name Here
+output:
+  rmdformats::downcute:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    downcute_theme: "chaos"
+    toc_depth: 3
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input)
+  })
+---
+
+This short introductory assignment is meant to give you
+an opportunity to play around in RStudio and practice
+working with .Rmd files. 
+
+**Do these exercises in order**
+
+Exercise 1: Create a code block
+
+This is a code block:
+
+```{r, example_code_block}
+
+x <- 1
+y <- 1
+
+print(x + y)
+
+```
+
+If you run the code, you should get the answer of
+1 + 1 = 2
+
+In the space below, write a new code block that outputs the answer of 18 minus 5.
+Feel free to copy and paste from the block above; however, the name of all code
+blocks in a file need to be unique (i.e., this one can't be "example_code_block").
+
+
+Exercise 2: Download data
+
+Write a code block below to download the CO2 data from R (it is built in).
+
+
+Exercise 3: Error checking and fixing (assuming your code blocks above are perfect)
+
+Step 1: Try to "knit" this .Rmd file. If you do it correctly, there should be an
+error (or multiple errors). Copy any errors you encounter below as text (not in a code block).
+
+Step 2: The issue is that there are errors is in the code block below. 
+Fix those errors and knit it again. Note: It may take multiple tries to figure
+out all the errors. Add any new errors to the list in **Step 1**.
+
+```{r, example_code_block}
+
+# Download Palmer Penguins data
+
+library(PalmerPegnuins)
+
+palmerdata <- data(penguins)
+
+# Check names of 
+
+# Figure out data classes
+class(penguines$species)
+class(penguins$Bill_Length_mm)
+```
+
+
+Step 3: Once you have all the errors corrected, you should have an HTML file. 
+Submit that HTML file to Brightspace by 8 am on 2/08/2023. 
