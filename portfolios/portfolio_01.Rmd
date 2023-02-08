@@ -14,7 +14,7 @@ output:
 knit: (function(input, ...) {
     rmarkdown::render(
       input,
-      output_dir = "../knit_html"
+      output_dir = "/knit_portfolios"
     )
   })
 ---
@@ -63,7 +63,7 @@ y1 <- iris$Sepal.Length
 y2 <- Orange$age
 y3 <- Orange$circumference
 y4 <- InsectSprays$count
-y5 <- ChickWeight$ Weight
+y5 <- ChickWeight$Weight
 # ALl of these are built-in data in R
 # Explore more by running
 # data()

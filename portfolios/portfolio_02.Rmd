@@ -8,13 +8,13 @@ output:
     thumbnails: true
     lightbox: true
     gallery: false
-    highlight: tangoS
+    highlight: tango
     downcute_theme: "chaos"
     toc_depth: 3
 knit: (function(input, ...) {
     rmarkdown::render(
       input,
-      output_dir = "../knit_html"
+      output_dir = "/knit_portfolios"
     )
   })
 ---

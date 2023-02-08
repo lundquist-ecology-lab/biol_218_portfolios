@@ -44,7 +44,7 @@ as a step by step guide to export (or **knit**) a `.Rmd` file to `.html`.
 
 ## Part 3: Dealing with data
 
-Data is made up of **variables** can classify data into two basic:
+Data is made up of **variables** can classify data into two basic groups:
 
 - **Numeric**: numbers, either whole or fractions
     - Discrete: Only certain values possible within a given range (e.g. counts)
