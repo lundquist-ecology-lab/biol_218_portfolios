@@ -7,7 +7,7 @@ import pandas as pd
 
 df = pd.read_csv("../example_data/iris.csv")
 
-# Python does not  like the "." in column namesso switch to snake_case
+# Python does not  like the "." in column names so switch to snake_case
 df.columns = df.columns.str.replace(".","_", regex=False)
 
 #%%
