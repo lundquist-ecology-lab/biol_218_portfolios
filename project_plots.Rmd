@@ -1,0 +1,87 @@
+```{r barplot}
+
+# Load the required packages
+library(ggplot2)
+library(Rmisc) 
+
+# Create sample data
+set.seed(123)
+data <- data.frame(
+  group = rep(c("A", "B", "C"), each = 5),
+  value = rnorm(15, mean = c(5, 8, 10), sd = 2)
+)
+
+# Calculate mean and standard error by group
+summary_data <- summarySE(data, measurevar = "value", groupvars = "group")
+
+# Create bar plot with standard error bars
+ggplot(summary_data, aes(x = group, y = value, fill = group)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  ylim(0, 15) +
+  geom_errorbar(aes(ymin = value - se, ymax = value + se),
+                width = 0.2, position = position_dodge(0.9)) +
+  scale_fill_manual(values = c("purple", "orange", "pink")) +
+  geom_text(aes(label = c("*", "*", "*")), y = summary_data$value + 4, size = 5) +
+  labs(title = "Bar Plot with Standard Error Bars",
+       x = "Group", y = "Value") +
+  theme_minimal()
+
+```
+
+
+```{python barplot}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate some sample data
+mean_values = [2, 5, 3, 6]
+std_errors = [0.5, 1, 0.75, 1.25]
+
+# Create a bar plot with error bars
+fig, ax = plt.subplots()
+ax.bar(range(len(mean_values)), mean_values, yerr=std_errors, align='center', alpha=0.5, ecolor='black', capsize=10, color=['C01', 'C02', 'C03', 'C04'])
+
+# Add x-axis tick labels and a title
+ax.set_xticks(range(len(mean_values)))
+ax.set_xticklabels(['Group 1', 'Group 2', 'Group 3', 'Group 4'])
+ax.set_title('Bar Plot with Standard Error')
+ax.set_ylim(0, 10)
+
+# Add a star over each bar
+for i, mean in enumerate(mean_values):
+    ax.annotate('*', xy=(i, mean), xytext=(i, mean+2), ha='center', va='bottom', size=20)
+
+
+# Show the plot
+plt.show()
+
+
+
+```
+
+
+```{r}
+# Load the required packages
+library(ggplot2)
+
+# Create sample data
+set.seed(123)
+data <- data.frame(
+  x = rnorm(100, mean = c(5, 10), sd = 2),
+  y = rnorm(100, mean = c(10, 15), sd = 3)
+)
+
+# Calculate the regression line
+model <- lm(y ~ x, data = data)
+summary(model)
+
+# Create scatter plot with line of best fit
+ggplot(data, aes(x = x, y = y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
+  scale_color_manual(values = c("red")) +
+  labs(title = "Scatter Plot with Line of Best Fit",
+       x = "X", y = "Y") +
+  theme_minimal()
+
+```
